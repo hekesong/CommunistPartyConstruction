@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">CommunistPartyConstruction</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="home">主页</string>
+    <string name="interactive">互动</string>
+    <string name="me">我的</string>
 </resources>
