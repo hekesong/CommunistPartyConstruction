@@ -4,4 +4,8 @@
     <string name="home">主页</string>
     <string name="interactive">互动</string>
     <string name="me">我的</string>
+    <string name="news">新闻资讯</string>
+    <string name="style">党校风采</string>
+    <string name="theoretical_overview">理论要览</string>
+    <string name="announcement">通知公告</string>
 </resources>

@@ -2,9 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     >
+
     <LinearLayout
+        android:id="@+id/mainactivity_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -31,8 +32,12 @@
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:button="@null"
-                android:textSize="15sp"
+                android:textSize="12sp"
                 android:text="@string/home"
+                android:drawableTop="@drawable/home_click"
+                android:drawablePadding="2dp"
+                android:textColor="@drawable/navigationbar_click"
+                android:checked="true"
                 />
             <RadioButton
                 android:id="@+id/mainactivity_rb_interactive"
@@ -42,8 +47,11 @@
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:button="@null"
-                android:textSize="15sp"
+                android:textSize="12sp"
+                android:drawablePadding="2dp"
                 android:text="@string/interactive"
+                android:drawableTop="@drawable/interactive_click"
+                android:textColor="@drawable/navigationbar_click"
                 />
             <RadioButton
                 android:id="@+id/mainactivity_rb_me"
@@ -53,11 +61,20 @@
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:button="@null"
-                android:textSize="15sp"
+                android:textSize="12sp"
+                android:drawablePadding="2dp"
                 android:text="@string/me"
+                android:drawableTop="@drawable/me_click"
+                android:textColor="@drawable/navigationbar_click"
                 />
         </RadioGroup>
     </LinearLayout>
-
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mainactivity_fragment"
+        android:layout_above="@id/mainactivity_ll"
+        >
+    </FrameLayout>
 
 </RelativeLayout>

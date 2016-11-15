@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="grey">#DCDCDC</color>
+    <color name="red">#E04949</color>
+    <color name="general_title_grey">#3c3c3c</color>
+    <color name="hint_grey">#3c3c3c</color>
+    <color name="white">#FFFFFF</color>
 </resources>
