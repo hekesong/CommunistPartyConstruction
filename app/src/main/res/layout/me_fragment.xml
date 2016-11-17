@@ -52,8 +52,8 @@
                 android:layout_height="50dp"
                 android:layout_centerVertical="true"/>
             <TextView
-                android:layout_width=""
-                android:layout_height="" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </RelativeLayout>
     </LinearLayout>
 </com.communistpartyconstruction.support.PercentLinearLayout>
