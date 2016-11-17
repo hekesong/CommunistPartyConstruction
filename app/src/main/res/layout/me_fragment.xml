@@ -1,18 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.communistpartyconstruction.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/theoretical_overview"
-        android:drawableTop="@mipmap/theoretical_overview"
-        android:textSize="12sp"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:layout_gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_heightPercent="30%"
         android:background="@color/red"
-        />
-</LinearLayout>
+        android:padding="10dp">
+        <com.communistpartyconstruction.support.CircleImageView
+            android:id="@+id/meFragment_headView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36px"
+            android:text="姓名"
+            android:layout_alignTop="@id/meFragment_headView"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/white"
+            android:id="@+id/meFragment_name"
+            android:layout_toRightOf="@id/meFragment_headView"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_alignLeft="@id/meFragment_name"
+            android:textSize="32px"
+            android:text="学校"
+            android:textColor="@color/white"
+            android:id="@+id/meFragment_school"
+            android:layout_toRightOf="@id/meFragment_headView"
+            android:layout_below="@id/meFragment_name"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_grey">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/white"
+            android:layout_marginTop="5dp">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width=""
+                android:layout_height="" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.communistpartyconstruction.support.PercentLinearLayout>
