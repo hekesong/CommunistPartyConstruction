@@ -3,7 +3,7 @@
     package="com.communistpartyconstruction" >
 
     <application
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         <activity
