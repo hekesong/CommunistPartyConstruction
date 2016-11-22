@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_heightPercent="30%"
+        app:layout_heightPercent="25%"
         android:background="@color/red"
         android:padding="10dp">
         <com.communistpartyconstruction.support.CircleImageView
@@ -41,19 +41,192 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_grey">
+        android:background="@color/background_grey"
+        android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="50dp"
             android:background="@color/white"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="10dp"
+            android:id="@+id/meFragment_integral"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp">
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerVertical="true"/>
+                android:layout_width="22dp"
+                android:id="@+id/meFragment_integralImage"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/integral"/>
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:id="@+id/meFragment_integralText"
+                android:text="@string/myPoint"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/general_title_grey"
+                android:layout_toRightOf="@id/meFragment_integralImage"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/meFragment_integralText"
+                android:text="+3"
+                android:id="@+id/meFragment_integralNumber"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/red"
+                />
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@mipmap/goback3"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:layout_marginTop="1dp"
+            android:id="@+id/meFragment_history"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp">
+            <ImageView
+                android:layout_width="22dp"
+                android:id="@+id/meFragment_historyImage"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/clock"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/myHistory"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/general_title_grey"
+                android:layout_toRightOf="@id/meFragment_historyImage"/>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@mipmap/goback3"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:layout_marginTop="1dp"
+            android:id="@+id/meFragment_share"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp">
+            <ImageView
+                android:layout_width="22dp"
+                android:id="@+id/meFragment_shareImage"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/star"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/myShare"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/general_title_grey"
+                android:layout_toRightOf="@id/meFragment_shareImage"/>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@mipmap/goback3"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:layout_marginTop="1dp"
+            android:id="@+id/meFragment_message"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp">
+            <ImageView
+                android:layout_width="22dp"
+                android:id="@+id/meFragment_messageImage"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/message"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/myMessage"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/general_title_grey"
+                android:layout_toRightOf="@id/meFragment_messageImage"/>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@mipmap/goback3"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:id="@+id/meFragment_suggest"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp">
+            <ImageView
+                android:layout_width="22dp"
+                android:id="@+id/meFragment_suggestImage"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/edit"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/suggest"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/general_title_grey"
+                android:layout_toRightOf="@id/meFragment_suggestImage"/>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@mipmap/goback3"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:layout_marginTop="1dp"
+            android:id="@+id/meFragment_setting"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp">
+            <ImageView
+                android:layout_width="22dp"
+                android:id="@+id/meFragment_settingImage"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/setting"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setting"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/general_title_grey"
+                android:layout_toRightOf="@id/meFragment_settingImage"/>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@mipmap/goback3"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
         </RelativeLayout>
     </LinearLayout>
 </com.communistpartyconstruction.support.PercentLinearLayout>
