@@ -16,9 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.CustomLoginActivity"></activity>
-        <activity android:name=".Activity.PasswordChangeActivity"></activity>
-        <activity android:name=".Activity.MyPointActivity"></activity>
+        <activity android:name=".Activity.CustomLoginActivity" />
+        <activity android:name=".Activity.PasswordChangeActivity" />
+        <activity android:name=".Activity.MyPointActivity" />
+        <activity android:name=".Activity.SettingActivity"></activity>
     </application>
 
 </manifest>

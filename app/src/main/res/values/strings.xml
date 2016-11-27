@@ -14,9 +14,15 @@
     <string name="myHistory">我的足迹</string>
     <string name="suggest">意见反馈</string>
     <string name="setting">设置</string>
+
     <string name="myPointHint1">每日登陆，每日可获得1积分</string>
     <string name="myPointHint2">浏览超过5分钟，每日可获得1积分</string>
     <string name="myPointHint3">分享APP内容，每日可获得1积分</string>
     <string name="myPointHint4">评论文章及新闻，每日可获得1积分</string>
     <string name="myPointHint5">填写调查问卷，每次问卷可获得3积分</string>
+
+    <string name="messagePush">消息推送</string>
+    <string name="passwordChange">密码修改</string>
+    <string name="clearMemory">清除缓存</string>
+    <string name="aboutCPC">关于党建云</string>
 </resources>
