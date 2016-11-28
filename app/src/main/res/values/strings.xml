@@ -25,4 +25,5 @@
     <string name="passwordChange">密码修改</string>
     <string name="clearMemory">清除缓存</string>
     <string name="aboutCPC">关于党建云</string>
+    <string name="logout">退出登录</string>
 </resources>
