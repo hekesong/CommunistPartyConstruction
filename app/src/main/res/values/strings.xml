@@ -26,4 +26,16 @@
     <string name="clearMemory">清除缓存</string>
     <string name="aboutCPC">关于党建云</string>
     <string name="logout">退出登录</string>
+
+    <string name="infoCheck">信息查阅</string>
+    <string name="submitApplication">递交申请</string>
+    <string name="rules">规章制度</string>
+    <string name="questionnaire">问卷调查</string>
+    <string name="fileInfo">文件资料</string>
+    <string name="videoInfo">视频资料</string>
+    <string name="profileCheck">个人信息查看</string>
+    <string name="onlineSubmit">在线申请入党</string>
+    <string name="CPCRules">中国共产党章程</string>
+    <string name="studyInfo">学习资料</string>
+    <string name="membership">学员天地</string>
 </resources>

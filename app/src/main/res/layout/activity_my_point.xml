@@ -37,7 +37,7 @@
         android:paddingTop="30dp"
         android:paddingBottom="30dp"
         android:paddingLeft="20dp">
-        <com.communistpartyconstruction.support.CircleImageView
+        <com.communistpartyconstruction.Support.CircleImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:id="@+id/myPoint_headView"

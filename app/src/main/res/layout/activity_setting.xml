@@ -30,7 +30,7 @@
             android:textSize="18dp"
             android:text="@string/setting"/>
     </RelativeLayout>
-    <com.communistpartyconstruction.support.PercentLinearLayout
+    <com.communistpartyconstruction.Support.PercentLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
@@ -153,5 +153,5 @@
             android:text="@string/logout"
             android:textColor="@color/white"
             android:background="@drawable/login_confirmbutton"/>
-    </com.communistpartyconstruction.support.PercentLinearLayout>
+    </com.communistpartyconstruction.Support.PercentLinearLayout>
 </LinearLayout>
