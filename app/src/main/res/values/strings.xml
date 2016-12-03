@@ -14,6 +14,7 @@
     <string name="myHistory">我的足迹</string>
     <string name="suggest">意见反馈</string>
     <string name="setting">设置</string>
+    <string name="submit">提交</string>
 
     <string name="myPointHint1">每日登陆，每日可获得1积分</string>
     <string name="myPointHint2">浏览超过5分钟，每日可获得1积分</string>
@@ -38,4 +39,5 @@
     <string name="CPCRules">中国共产党章程</string>
     <string name="studyInfo">学习资料</string>
     <string name="membership">学员天地</string>
+    <string name="comfirmChange">确认修改</string>
 </resources>

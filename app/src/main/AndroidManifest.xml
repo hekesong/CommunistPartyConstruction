@@ -19,7 +19,8 @@
         <activity android:name=".Activity.CustomLoginActivity" />
         <activity android:name=".Activity.PasswordChangeActivity" />
         <activity android:name=".Activity.MyPointActivity" />
-        <activity android:name=".Activity.SettingActivity"></activity>
+        <activity android:name=".Activity.SettingActivity" />
+        <activity android:name=".Activity.SuggestActivity"></activity>
     </application>
 
 </manifest>
