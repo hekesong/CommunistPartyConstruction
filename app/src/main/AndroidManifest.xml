@@ -20,7 +20,8 @@
         <activity android:name=".Activity.PasswordChangeActivity" />
         <activity android:name=".Activity.MyPointActivity" />
         <activity android:name=".Activity.SettingActivity" />
-        <activity android:name=".Activity.SuggestActivity"></activity>
+        <activity android:name=".Activity.SuggestActivity" />
+        <activity android:name=".Activity.SubmitApplicationActivity"></activity>
     </application>
 
 </manifest>
