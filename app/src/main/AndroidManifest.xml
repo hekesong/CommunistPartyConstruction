@@ -21,7 +21,8 @@
         <activity android:name=".Activity.MyPointActivity" />
         <activity android:name=".Activity.SettingActivity" />
         <activity android:name=".Activity.SuggestActivity" />
-        <activity android:name=".Activity.SubmitApplicationActivity"></activity>
+        <activity android:name=".Activity.SubmitApplicationActivity" />
+        <activity android:name=".Activity.RulesActivity"></activity>
     </application>
 
 </manifest>

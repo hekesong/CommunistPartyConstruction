@@ -45,6 +45,7 @@ public class SubmitApplicationActivity extends AppCompatActivity implements View
             case R.id.submitApplication_goBack:
                 break;
             case R.id.submitApplication_submitButton:
+
                 break;
 
             default:
