@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.communistpartyconstruction.Fragment.HomeFragment;
 import com.communistpartyconstruction.Fragment.InteractiveFragment;
@@ -18,6 +19,7 @@ public class MainActivity extends Activity {
     private MeFragment meFragment;
     private android.app.FragmentTransaction begintTransaction;
     private android.app.FragmentManager fragmentManager;
+    private long time = System.currentTimeMillis();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,17 @@ public class MainActivity extends Activity {
         rb_interactive.setOnClickListener(mylisten);
         rb_me = (RadioButton) findViewById(R.id.mainactivity_rb_me);
         rb_me.setOnClickListener(mylisten);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - time > 2000){
+            Toast.makeText(MainActivity.this,R.string.exit_program,Toast.LENGTH_SHORT).show();
+            time = System.currentTimeMillis();
+        } else {
+            super.onBackPressed();
+        }
+
     }
 
     private class Mylisten implements View.OnClickListener{

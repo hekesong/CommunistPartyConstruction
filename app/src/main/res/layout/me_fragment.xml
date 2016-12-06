@@ -38,6 +38,7 @@
             android:layout_toRightOf="@id/meFragment_headView"
             android:layout_below="@id/meFragment_name"/>
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

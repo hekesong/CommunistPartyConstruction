@@ -8,4 +8,6 @@
     <color name="white">#FFFFFF</color>
     <color name="line_grey">#dcdcdc</color>
     <color name="blue">#0095e2</color>
+    <color name="text_black">#646464</color>
+    <color name="hint_text">#848484</color>
 </resources>
