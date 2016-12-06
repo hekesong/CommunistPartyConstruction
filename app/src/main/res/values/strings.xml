@@ -14,6 +14,8 @@
     <string name="myHistory">我的足迹</string>
     <string name="suggest">意见反馈</string>
     <string name="setting">设置</string>
+    <string name="submit">提交</string>
+
     <string name="myPointHint1">每日登陆，每日可获得1积分</string>
     <string name="myPointHint2">浏览超过5分钟，每日可获得1积分</string>
     <string name="myPointHint3">分享APP内容，每日可获得1积分</string>
@@ -23,4 +25,34 @@
     <string name="title_the_party_school">党校概况</string>
     <string name="title_party_building_news">党建要闻</string>
     <string name="text_the_party_school">&#12288;&#12288;中国共产党电子科技大学委员会党校是在学校党委直接领导下，培养党员、干部和入党积极分子的学校；是党校学习、研究、宣传马克思列宁主义、毛泽东思想、中国特色社会主义理论体系的重要阵地；是党员、干部和入党积极分子增强党性锻炼的熔炉，下设十二个分党校，党校办公室设在党委组织部</string>
+    <string name="messagePush">消息推送</string>
+    <string name="passwordChange">密码修改</string>
+    <string name="clearMemory">清除缓存</string>
+    <string name="aboutCPC">关于党建云</string>
+    <string name="logout">退出登录</string>
+    <string name="infoCheck">信息查阅</string>
+    <string name="submitApplication">递交申请</string>
+    <string name="rules">规章制度</string>
+    <string name="questionnaire">问卷调查</string>
+    <string name="fileInfo">文件资料</string>
+    <string name="videoInfo">视频资料</string>
+    <string name="profileCheck">个人信息查看</string>
+    <string name="onlineSubmit">在线申请入党</string>
+    <string name="CPCRules">中国共产党章程</string>
+    <string name="studyInfo">学习资料</string>
+    <string name="membership">学员天地</string>
+    <string name="confirmChange">确认修改</string>
+    <string name="personalInformationForm">个人基本信息填写</string>
+    <string name="personalInformationName">姓名</string>
+    <string name="personalInformationGender">性别</string>
+    <string name="personalInformationRacial">民族</string>
+    <string name="personalInformationBirthday">出生年月</string>
+    <string name="personalInformationNativePlace">籍贯</string>
+    <string name="personalInformationBirthPlace">出生地</string>
+    <string name="personalInformationEducation">学历</string>
+    <string name="personalInformationSchool">学校或职称</string>
+    <string name="personalInformationWork">单位、职务或职业</string>
+    <string name="personalInformationPresentPlace">现居住地</string>
+    <string name="personalInformationID">身份证号码</string>
+    <string name="personalInformationSpecial">有何专长</string>
 </resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="60dp"
+    android:id="@+id/interactive_list_body"
+    android:padding="10dp">
+    <TextView
+        android:id="@+id/interactive_list_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="16sp"
+        android:textColor="@color/general_title_grey"
+        android:gravity="left|top"
+        android:text="标题" />
+    <TextView
+        android:id="@+id/interactive_list_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/light_grey"
+        android:textSize="14sp"
+        android:gravity="bottom|right"
+        android:text="1" />
+</RelativeLayout>

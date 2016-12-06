@@ -6,12 +6,11 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.communistpartyconstruction.R;
-import com.communistpartyconstruction.support.CircleImageView;
+import com.communistpartyconstruction.Support.CircleImageView;
 
 /**
  * Created by hekesong on 2016/11/15.
