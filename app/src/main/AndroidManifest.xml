@@ -22,7 +22,8 @@
         <activity android:name=".Activity.SettingActivity" />
         <activity android:name=".Activity.SuggestActivity" />
         <activity android:name=".Activity.SubmitApplicationActivity" />
-        <activity android:name=".Activity.RulesActivity"></activity>
+        <activity android:name=".Activity.RulesActivity" />
+        <activity android:name=".Activity.InformActivity"></activity>
     </application>
 
 </manifest>
