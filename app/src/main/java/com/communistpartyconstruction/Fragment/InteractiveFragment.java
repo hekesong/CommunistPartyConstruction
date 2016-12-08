@@ -1,6 +1,7 @@
 package com.communistpartyconstruction.Fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.communistpartyconstruction.Activity.InformActivity;
+import com.communistpartyconstruction.Activity.RulesActivity;
+import com.communistpartyconstruction.Activity.SubmitApplicationActivity;
+import com.communistpartyconstruction.Activity.VideoInformationActivity;
 import com.communistpartyconstruction.Adapter.Decoration.InteractiveRecycleViewDecoration;
 import com.communistpartyconstruction.Adapter.InteractiveRecycleViewAdapter;
 import com.communistpartyconstruction.R;
@@ -42,6 +47,13 @@ public class InteractiveFragment extends Fragment implements View.OnClickListene
         questionnaire = (RelativeLayout) view.findViewById(R.id.interactive_questionnaire);
         fileInfo = (RelativeLayout) view.findViewById(R.id.interactive_fileInfo);
         videoInfo = (RelativeLayout) view.findViewById(R.id.interactive_videoInfo);
+        infoCheck.setOnClickListener(this);
+        submitApp.setOnClickListener(this);
+        rules.setOnClickListener(this);
+        questionnaire.setOnClickListener(this);
+        fileInfo.setOnClickListener(this);
+        videoInfo.setOnClickListener(this);
+
         memberList = (RecyclerView) view.findViewById(R.id.interactive_list);
         //设置固定大小
         memberList.setHasFixedSize(true);
@@ -60,18 +72,27 @@ public class InteractiveFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
+        Intent intent = new Intent();
         switch (view.getId()){
             case R.id.interactive_infoCheck:
+                intent.setClass(this.getActivity(), InformActivity.class);
+                this.getActivity().startActivity(intent);
                 break;
             case R.id.interactive_submitApplication:
+                intent.setClass(this.getActivity(), SubmitApplicationActivity.class);
+                this.getActivity().startActivity(intent);
                 break;
             case R.id.interactive_rules:
+                intent.setClass(this.getActivity(), RulesActivity.class);
+                this.getActivity().startActivity(intent);
                 break;
             case R.id.interactive_questionnaire:
                 break;
             case R.id.interactive_fileInfo:
                 break;
             case R.id.interactive_videoInfo:
+                intent.setClass(this.getActivity(), VideoInformationActivity.class);
+                this.getActivity().startActivity(intent);
                 break;
 
             default:

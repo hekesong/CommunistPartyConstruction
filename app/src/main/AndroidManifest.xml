@@ -23,7 +23,8 @@
         <activity android:name=".Activity.SuggestActivity" />
         <activity android:name=".Activity.SubmitApplicationActivity" />
         <activity android:name=".Activity.RulesActivity" />
-        <activity android:name=".Activity.InformActivity"></activity>
+        <activity android:name=".Activity.InformActivity" />
+        <activity android:name=".Activity.VideoInformationActivity"></activity>
     </application>
 
 </manifest>
