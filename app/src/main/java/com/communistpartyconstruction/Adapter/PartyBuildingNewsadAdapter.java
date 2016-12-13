@@ -1,0 +1,74 @@
+package com.communistpartyconstruction.Adapter;
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.communistpartyconstruction.JavaBean.PartyBuildingNews;
+import com.communistpartyconstruction.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by hekesong on 2016/12/6.
+ */
+
+public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildingNewsadAdapter.ViewHolder>{
+    private LayoutInflater mInflater;
+    private List<PartyBuildingNews> list;
+
+    public PartyBuildingNewsadAdapter(Context context){
+        this.mInflater = LayoutInflater.from(context);
+        list = new ArrayList<PartyBuildingNews>();
+        PartyBuildingNews partyBuildingNews = new PartyBuildingNews();
+        for (int i = 0; i < 20; i++) {
+            partyBuildingNews.setTitle("树立正确入党动机，发挥模范带头作用--记第54期自动化分党校课后讨论");
+            partyBuildingNews.setBrowse("463次");
+            partyBuildingNews.setComment("156次");
+            partyBuildingNews.setTime("一天前");
+            partyBuildingNews.setShare("816次");
+            list.add(partyBuildingNews);
+        }
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+        View view = mInflater.inflate(R.layout.partybuildingnews_list_item, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.item_title.setText(list.get(position).getTitle());
+        holder.item_browse.setText(list.get(position).getBrowse());
+        holder.item_comment.setText(list.get(position).getComment());
+        holder.item_share.setText(list.get(position).getShare());
+        holder.item_time.setText(list.get(position).getTime());
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+    //自定义的ViewHolder，持有每个Item的的所有界面元素
+    static class ViewHolder extends RecyclerView.ViewHolder{
+        private TextView item_title,item_browse,item_share,item_comment,item_time;
+        private ImageView item_iv;
+        ViewHolder(View view){
+            super(view);
+            item_title = (TextView) view.findViewById(R.id.partybuildingnews_title_tv);
+            item_browse = (TextView) view.findViewById(R.id.partybuildingnews_browse_tv);
+            item_share = (TextView) view.findViewById(R.id.partybuildingnews_share_tv);
+            item_comment = (TextView) view.findViewById(R.id.partybuildingnews_comment_tv);
+            item_time = (TextView) view.findViewById(R.id.partybuildingnews_time_tv);
+            item_iv = (ImageView) view.findViewById(R.id.partybuildingnews_iv);
+        }
+    }
+}

@@ -20,6 +20,17 @@
             android:layout_gravity="center"
             />
     </LinearLayout>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
 
 <LinearLayout
     android:id="@+id/home_fragment_ll"
@@ -106,8 +117,8 @@
 </LinearLayout>
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:src="@mipmap/ic_launcher"
+        android:layout_height="115dp"
+        android:src="@mipmap/picture_the_party_school"
         android:scaleType="fitCenter"
         />
 <LinearLayout
@@ -166,4 +177,17 @@
             android:gravity="center"
             />
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/grey"
+        android:dividerHeight="1dp"
+        android:id="@+id/home_list"
+        >
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
+
+</ScrollView>
 </LinearLayout>
