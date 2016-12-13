@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_video_information_cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardBackgroundColor="@android:color/white"
+    android:layout_margin="5dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activity_video_information_cardView_body"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
+
+
+        <ImageView
+            android:id="@+id/activity_video_information_cardView_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/video1"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/activity_video_information_cardView_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_video_information_cardView_img"
+            android:layout_centerHorizontal="true"
+            android:text="视频"
+            android:layout_marginTop="5dp"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

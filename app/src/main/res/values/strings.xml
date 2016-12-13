@@ -44,6 +44,7 @@
     <string name="confirmChange">确认修改</string>
     <string name="personalInformationForm">个人基本信息填写</string>
     <string name="personalInformationName">姓名</string>
+    <string name="personalInformationStudentID">学号</string>
     <string name="personalInformationGender">性别</string>
     <string name="personalInformationRacial">民族</string>
     <string name="personalInformationBirthday">出生年月</string>
@@ -55,4 +56,7 @@
     <string name="personalInformationPresentPlace">现居住地</string>
     <string name="personalInformationID">身份证号码</string>
     <string name="personalInformationSpecial">有何专长</string>
+    <string name="infoCheckName">姓名:</string>
+    <string name="infoCheckStudentID">学号:</string>
+    <string name="infoCheckInform">查询</string>
 </resources>
