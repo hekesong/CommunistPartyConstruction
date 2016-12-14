@@ -6,10 +6,18 @@ package com.communistpartyconstruction.JavaBean;
  */
 
 public class PartyBuildingNews {
-    private String title,imageurl,browse,share,comment,time;
+    private String title,imageurl,browse,share,comment,time,contenturl;
 
     public String getTitle() {
         return title;
+    }
+
+    public String getContenturl() {
+        return contenturl;
+    }
+
+    public void setContenturl(String contenturl) {
+        this.contenturl = contenturl;
     }
 
     public String getTime() {

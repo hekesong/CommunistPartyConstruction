@@ -1,6 +1,7 @@
 package com.communistpartyconstruction.Fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.OrientationHelper;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 
+import com.communistpartyconstruction.Activity.WebViewActivity;
 import com.communistpartyconstruction.Adapter.Decoration.InteractiveRecycleViewDecoration;
 import com.communistpartyconstruction.Adapter.PartyBuildingNewsadAdapter;
 import com.communistpartyconstruction.R;
@@ -49,6 +51,16 @@ public class HomeFragment extends Fragment{
         fullyLinearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
         recycleView.setLayoutManager(fullyLinearLayoutManager);
         adapter = new PartyBuildingNewsadAdapter(this.getActivity());
+        adapter.setOnItemClickListener(new PartyBuildingNewsadAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View view, String data) {
+                Intent intent = new Intent();
+                intent.putExtra("contenturl",data);
+
+                intent.setClass(getActivity(), WebViewActivity.class);
+                startActivity(intent);
+            }
+        });
         recycleView.setAdapter(adapter);
         recycleView.addItemDecoration(new InteractiveRecycleViewDecoration(this.getActivity(),OrientationHelper.VERTICAL));
         //解决打开APP后，直接滑到recycleView的位置，上面的view被遮挡

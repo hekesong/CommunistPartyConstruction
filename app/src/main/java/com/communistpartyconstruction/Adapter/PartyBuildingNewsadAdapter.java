@@ -18,12 +18,19 @@ import java.util.List;
  * Created by hekesong on 2016/12/6.
  */
 
-public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildingNewsadAdapter.ViewHolder>{
+public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildingNewsadAdapter.ViewHolder> implements View.OnClickListener{
     private LayoutInflater mInflater;
     private List<PartyBuildingNews> list;
+    private OnRecyclerViewItemClickListener mOnItemClickListener = null;
+    private Context mcontext;
+    //define interface
+    public static interface OnRecyclerViewItemClickListener {
+        void onItemClick(View view , String data);
+    }
 
     public PartyBuildingNewsadAdapter(Context context){
         this.mInflater = LayoutInflater.from(context);
+        mcontext = context;
         list = new ArrayList<PartyBuildingNews>();
         PartyBuildingNews partyBuildingNews = new PartyBuildingNews();
         for (int i = 0; i < 20; i++) {
@@ -32,6 +39,7 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
             partyBuildingNews.setComment("156次");
             partyBuildingNews.setTime("一天前");
             partyBuildingNews.setShare("816次");
+            partyBuildingNews.setContenturl("http://www.baidu.com/");
             list.add(partyBuildingNews);
         }
     }
@@ -40,6 +48,8 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = mInflater.inflate(R.layout.partybuildingnews_list_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
+        view.setOnClickListener(this);
+
         return viewHolder;
     }
 
@@ -50,6 +60,7 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
         holder.item_comment.setText(list.get(position).getComment());
         holder.item_share.setText(list.get(position).getShare());
         holder.item_time.setText(list.get(position).getTime());
+        holder.itemView.setTag(list.get(position).getContenturl());
     }
 
     @Override
@@ -57,6 +68,17 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
         return list.size();
     }
 
+    @Override
+    public void onClick(View view) {
+        if (mOnItemClickListener != null) {
+            //注意这里使用getTag方法获取数据
+            mOnItemClickListener.onItemClick(view,(String)view.getTag());
+        }
+    }
+
+    public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
+        this.mOnItemClickListener = listener;
+    }
     //自定义的ViewHolder，持有每个Item的的所有界面元素
     static class ViewHolder extends RecyclerView.ViewHolder{
         private TextView item_title,item_browse,item_share,item_comment,item_time;

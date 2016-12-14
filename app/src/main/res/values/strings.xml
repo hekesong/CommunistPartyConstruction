@@ -59,4 +59,5 @@
     <string name="infoCheckName">姓名:</string>
     <string name="infoCheckStudentID">学号:</string>
     <string name="infoCheckInform">查询</string>
+    <string name="news_details">要闻详情</string>
 </resources>
