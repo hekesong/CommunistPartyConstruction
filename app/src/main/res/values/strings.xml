@@ -60,4 +60,6 @@
     <string name="infoCheckStudentID">学号:</string>
     <string name="infoCheckInform">查询</string>
     <string name="news_details">要闻详情</string>
+    <string name="important_speech">重要讲话</string>
+    <string name="knowledge_school">知识学堂</string>
 </resources>

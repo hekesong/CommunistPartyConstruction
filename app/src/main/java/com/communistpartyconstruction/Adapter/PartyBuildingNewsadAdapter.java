@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.communistpartyconstruction.JavaBean.PartyBuildingNews;
 import com.communistpartyconstruction.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,20 +27,10 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
         void onItemClick(View view , String data);
     }
 
-    public PartyBuildingNewsadAdapter(Context context){
+    public PartyBuildingNewsadAdapter(Context context,List<PartyBuildingNews> list){
         this.mInflater = LayoutInflater.from(context);
         mcontext = context;
-        list = new ArrayList<PartyBuildingNews>();
-        PartyBuildingNews partyBuildingNews = new PartyBuildingNews();
-        for (int i = 0; i < 20; i++) {
-            partyBuildingNews.setTitle("树立正确入党动机，发挥模范带头作用--记第54期自动化分党校课后讨论");
-            partyBuildingNews.setBrowse("463次");
-            partyBuildingNews.setComment("156次");
-            partyBuildingNews.setTime("一天前");
-            partyBuildingNews.setShare("816次");
-            partyBuildingNews.setContenturl("http://www.baidu.com/");
-            list.add(partyBuildingNews);
-        }
+        this.list = list;
     }
 
     @Override
