@@ -30,7 +30,7 @@ public class VideoInformationActivity extends AppCompatActivity {
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                finish();
             }
         });
         recyclerView = (RecyclerView) findViewById(R.id.videoInformation_recycleView);
@@ -46,7 +46,7 @@ public class VideoInformationActivity extends AppCompatActivity {
         mAdapter = new VideoInformationRecycleViewAdapter(this);
         recyclerView.setAdapter(mAdapter);
         //添加分隔线
-        recyclerView.addItemDecoration(new VideoInformationRecycleViewDecoration(this));
+        //recyclerView.addItemDecoration(new VideoInformationRecycleViewDecoration(this));
 
     }
 }

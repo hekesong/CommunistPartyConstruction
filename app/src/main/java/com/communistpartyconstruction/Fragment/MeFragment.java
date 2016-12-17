@@ -1,6 +1,7 @@
 package com.communistpartyconstruction.Fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.communistpartyconstruction.Activity.MyPointActivity;
+import com.communistpartyconstruction.Activity.SettingActivity;
+import com.communistpartyconstruction.Activity.SuggestActivity;
 import com.communistpartyconstruction.R;
 import com.communistpartyconstruction.Support.CircleImageView;
 
@@ -51,8 +55,11 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     }
     @Override
     public void onClick(View view) {
+        Intent intent = new Intent();
         switch (view.getId()){
             case R.id.meFragment_integral:
+                intent.setClass(this.getActivity(), MyPointActivity.class);
+                this.getActivity().startActivity(intent);
                 break;
             case R.id.meFragment_history:
                 break;
@@ -61,8 +68,12 @@ public class MeFragment extends Fragment implements View.OnClickListener {
             case R.id.meFragment_message:
                 break;
             case R.id.meFragment_suggest:
+                intent.setClass(this.getActivity(), SuggestActivity.class);
+                this.getActivity().startActivity(intent);
                 break;
             case R.id.meFragment_setting:
+                intent.setClass(this.getActivity(), SettingActivity.class);
+                this.getActivity().startActivity(intent);
                 break;
             case R.id.meFragment_headView:
                 break;

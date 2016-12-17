@@ -59,6 +59,7 @@
                 android:textColor="@color/general_title_grey"
                 android:layout_marginLeft="10dp"
                 android:id="@+id/inform_name"
+                android:background="@null"
                 android:textSize="16sp" />
         </LinearLayout>
         <LinearLayout
@@ -79,6 +80,7 @@
                 android:textColor="@color/general_title_grey"
                 android:layout_marginLeft="10dp"
                 android:id="@+id/inform_studentID"
+                android:background="@null"
                 android:textSize="16sp" />
         </LinearLayout>
         <Button

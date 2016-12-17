@@ -1,5 +1,6 @@
 package com.communistpartyconstruction.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,19 +24,24 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     private void initUI(){
         message = (RelativeLayout) findViewById(R.id.setting_message);
         passwordChange = (RelativeLayout) findViewById(R.id.setting_password);
+        passwordChange.setOnClickListener(this);
         clearMemory = (RelativeLayout) findViewById(R.id.setting_clearMemory);
+        clearMemory.setOnClickListener(this);
         about = (RelativeLayout) findViewById(R.id.setting_about);
+        about.setOnClickListener(this);
         logout = (Button) findViewById(R.id.setting_logout);
+        logout.setOnClickListener(this);
         goBack = (Button) findViewById(R.id.setting_goBack);
-
+        goBack.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        Intent intent = new Intent();
         switch (view.getId()){
-            case R.id.setting_message:
-                break;
             case R.id.setting_password:
+                intent.setClass(this, PasswordChangeActivity.class);
+                this.startActivity(intent);
                 break;
             case R.id.setting_clearMemory:
                 break;
@@ -44,6 +50,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.setting_logout:
                 break;
             case R.id.setting_goBack:
+                finish();
                 break;
 
             default:

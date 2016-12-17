@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_rules"
+    android:id="@+id/activity_web_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background_grey"
-    tools:context="com.communistpartyconstruction.Activity.RulesActivity">
+    tools:context="com.communistpartyconstruction.Activity.WebViewActivity">
     <RelativeLayout
-        android:id="@+id/rules_bar"
+        android:id="@+id/webView_bar"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:background="#E04949"
@@ -17,7 +16,7 @@
         <Button
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:id="@+id/rules_goBack"
+            android:id="@+id/webView_goBack"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
             android:background="@mipmap/back"
@@ -26,17 +25,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:id="@+id/rules_bar_title"
+            android:id="@+id/webView_bar_title"
             android:textColor="#ffffff"
             android:textSize="18dp"
-            android:text="@string/rules"/>
+            android:text=""/>
     </RelativeLayout>
-    <android.support.v7.widget.RecyclerView
+    <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="#ffff0000"
-        android:dividerHeight="10dp"
-        android:id="@+id/rules_recycleView">
+        android:id="@+id/webView_webView">
 
-    </android.support.v7.widget.RecyclerView>
+    </WebView>
 </LinearLayout>

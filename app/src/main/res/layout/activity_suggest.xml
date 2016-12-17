@@ -41,6 +41,8 @@
             android:id="@+id/suggest_edittext"
             android:background="@drawable/suggest_edittext"
             android:textSize="18sp"
+            android:gravity="left"
+            android:padding="5dp"
             android:textColor="@color/general_title_grey"/>
     </RelativeLayout>
     <Button
