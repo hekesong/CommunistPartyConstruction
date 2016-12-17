@@ -24,7 +24,7 @@
     <string name="exit_program">再按一次返回键退出</string>
     <string name="title_the_party_school">党校概况</string>
     <string name="title_party_building_news">党建要闻</string>
-    <string name="text_the_party_school">&#12288;&#12288;中国共产党电子科技大学委员会党校是在学校党委直接领导下，培养党员、干部和入党积极分子的学校；是党校学习、研究、宣传马克思列宁主义、毛泽东思想、中国特色社会主义理论体系的重要阵地；是党员、干部和入党积极分子增强党性锻炼的熔炉，下设十二个分党校，党校办公室设在党委组织部</string>
+    <string name="text_the_party_school">&#12288;&#12288;中国共产党电子科技大学委员会党校是在学校党委直接领导下，培养党员、干部和入党积极分子的学校；是党校学习、研究、宣传马克思列宁主义、毛泽东思想、中国特色社会主义理论体系的重要阵地；是党员、干部和入党积极分子增强党性锻炼的熔炉，下设十二个分党校，党校办公室设在党委组织部。</string>
     <string name="messagePush">消息推送</string>
     <string name="passwordChange">密码修改</string>
     <string name="clearMemory">清除缓存</string>
@@ -59,4 +59,7 @@
     <string name="infoCheckName">姓名:</string>
     <string name="infoCheckStudentID">学号:</string>
     <string name="infoCheckInform">查询</string>
+    <string name="news_details">要闻详情</string>
+    <string name="important_speech">重要讲话</string>
+    <string name="knowledge_school">知识学堂</string>
 </resources>

@@ -55,8 +55,8 @@ public class VideoInformationRecycleViewAdapter extends RecyclerView.Adapter<Vid
         RelativeLayout body;
         ViewHolder(View view) {
             super(view);
-            item_title = (TextView) view.findViewById(R.id.activity_video_information_cardView_text);
-            body = (RelativeLayout) view.findViewById(R.id.activity_video_information_cardView_body);
+            item_title = (TextView) view.findViewById(R.id.activity_video_information_cardview_text);
+            body = (RelativeLayout) view.findViewById(R.id.activity_video_information_cardview_body);
         }
     }
 }
