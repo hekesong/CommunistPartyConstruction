@@ -8,6 +8,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.communistpartyconstruction.R;
 
@@ -21,6 +22,7 @@ public class WebViewActivity extends Activity {
 
     private WebView webView;
     private LinearLayout back;
+    private TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,10 @@ public class WebViewActivity extends Activity {
         setContentView(R.layout.activity_webview);
         Intent intent = getIntent();
         String contentUrl = intent.getStringExtra("contenturl");
+        title = (TextView) findViewById(R.id.webView_bar_title);
+        if (!intent.getStringExtra("title").equals(null)){
+            title.setText(intent.getStringExtra("title"));
+        }
         webView = (WebView) findViewById(webview);
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setJavaScriptEnabled(true);
