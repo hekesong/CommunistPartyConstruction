@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.communistpartyconstruction.JavaBean.PartyBuildingNews;
 import com.communistpartyconstruction.R;
@@ -48,6 +50,18 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
         holder.item_browse.setText(list.get(position).getBrowse());
         holder.item_comment.setText(list.get(position).getComment());
         holder.item_share.setText(list.get(position).getShare());
+        holder.share_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(mcontext,"分享成功",Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.comment_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(mcontext,"暂时无法评论",Toast.LENGTH_SHORT).show();
+            }
+        });
         holder.item_time.setText(list.get(position).getTime());
         holder.itemView.setTag(list.get(position).getContenturl());
     }
@@ -72,6 +86,7 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
     static class ViewHolder extends RecyclerView.ViewHolder{
         private TextView item_title,item_browse,item_share,item_comment,item_time;
         private ImageView item_iv;
+        private LinearLayout share_ll,comment_ll;
         ViewHolder(View view){
             super(view);
             item_title = (TextView) view.findViewById(R.id.partybuildingnews_title_tv);
@@ -80,6 +95,8 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
             item_comment = (TextView) view.findViewById(R.id.partybuildingnews_comment_tv);
             item_time = (TextView) view.findViewById(R.id.partybuildingnews_time_tv);
             item_iv = (ImageView) view.findViewById(R.id.partybuildingnews_iv);
+            share_ll = (LinearLayout) view.findViewById(R.id.partybuildingnews_share_ll);
+            comment_ll = (LinearLayout) view.findViewById(R.id.partybuildingnews_comment_ll);
         }
     }
 }
