@@ -13,6 +13,7 @@
     android:text="树立正确入党动机，发挥模范带头作用--记第54期自动化分党校课后讨论"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
     />
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,6 +28,7 @@
             android:scaleType="fitCenter"
             />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -130,6 +132,11 @@
              android:id="@+id/partybuildingnews_time_tv"
              />
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp">
+
     </LinearLayout>
 
 </LinearLayout>

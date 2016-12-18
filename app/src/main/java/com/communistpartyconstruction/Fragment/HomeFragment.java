@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import com.communistpartyconstruction.Activity.AnnouncementActivity;
 import com.communistpartyconstruction.Activity.NewsActivity;
+import com.communistpartyconstruction.Activity.StytleActivity;
 import com.communistpartyconstruction.Activity.WebViewActivity;
 import com.communistpartyconstruction.Adapter.Decoration.InteractiveRecycleViewDecoration;
 import com.communistpartyconstruction.Adapter.PartyBuildingNewsadAdapter;
@@ -111,10 +113,18 @@ public class HomeFragment extends Fragment{
                     startActivity(newIntent);
                     break;
                 case R.id.home_style_ll:
+                    Intent styleIntent = new Intent(getActivity(), StytleActivity.class);
+                    styleIntent.putExtra("type","TYPE_STYLE");
+                    startActivity(styleIntent);
                     break;
                 case R.id.home_theoretical_overview_ll:
+                    Intent theoreticalIntent = new Intent(getActivity(), StytleActivity.class);
+                    theoreticalIntent.putExtra("type","TYPE_THEORETICAL_OVERVIEW");
+                    startActivity(theoreticalIntent);
                     break;
                 case R.id.home_announcement_ll:
+                    Intent announcementIntent = new Intent(getActivity(), AnnouncementActivity.class);
+                    startActivity(announcementIntent);
                     break;
                 default:
                     break;
