@@ -68,7 +68,7 @@ public class ImportantSpeechFragment extends Fragment {
             public void onItemClick(View view, String data) {
                 Intent intent = new Intent();
                 intent.putExtra("contenturl",data);
-
+                intent.putExtra("title",getActivity().getResources().getString(R.string.news_details));
                 intent.setClass(getActivity(), WebViewActivity.class);
                 startActivity(intent);
             }

@@ -31,7 +31,9 @@
             android:layout_centerInParent="true"
             android:textColor="#ffffff"
             android:textSize="18dp"
-            android:text="@string/news_details"/>
+            android:text="@string/news_details"
+            android:id="@+id/webview_title_tv"
+            />
 
     </RelativeLayout>
 <WebView
