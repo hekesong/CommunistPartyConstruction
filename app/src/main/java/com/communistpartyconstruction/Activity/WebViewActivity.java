@@ -27,11 +27,12 @@ public class WebViewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
-        Intent intent=getIntent();
+        Intent intent = getIntent();
         String contentUrl = intent.getStringExtra("contenturl");
         String text_title = intent.getStringExtra("title");
-        webView = (WebView) findViewById(webview);
         title = (TextView) findViewById(R.id.webview_title_tv);
+        webView = (WebView) findViewById(webview);
+
         if (text_title != null&& !text_title.equals("")){
             title.setText(text_title);
         }
@@ -41,12 +42,14 @@ public class WebViewActivity extends Activity {
         webView.loadUrl(contentUrl);
         back = (LinearLayout) findViewById(R.id.webview_back);
         back.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-        Log.e("hekesong",contentUrl);
+
+        Log.e("hekesong", contentUrl);
     }
 
     //Web视图

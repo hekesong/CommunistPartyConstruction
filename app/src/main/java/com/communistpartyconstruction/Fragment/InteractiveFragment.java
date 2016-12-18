@@ -16,6 +16,7 @@ import com.communistpartyconstruction.Activity.InformActivity;
 import com.communistpartyconstruction.Activity.RulesActivity;
 import com.communistpartyconstruction.Activity.SubmitApplicationActivity;
 import com.communistpartyconstruction.Activity.VideoInformationActivity;
+import com.communistpartyconstruction.Activity.WebViewActivity;
 import com.communistpartyconstruction.Adapter.Decoration.InteractiveRecycleViewDecoration;
 import com.communistpartyconstruction.Adapter.InteractiveRecycleViewAdapter;
 import com.communistpartyconstruction.R;
@@ -83,12 +84,20 @@ public class InteractiveFragment extends Fragment implements View.OnClickListene
                 this.getActivity().startActivity(intent);
                 break;
             case R.id.interactive_rules:
+                intent.putExtra("type", "0");
                 intent.setClass(this.getActivity(), RulesActivity.class);
                 this.getActivity().startActivity(intent);
                 break;
             case R.id.interactive_questionnaire:
+                intent.putExtra("title",this.getString(R.string.questionnaire));
+                intent.putExtra("contenturl","http://www.baidu.com");
+                intent.setClass(this.getActivity(), WebViewActivity.class);
+                this.getActivity().startActivity(intent);
                 break;
             case R.id.interactive_fileInfo:
+                intent.putExtra("type", "1");
+                intent.setClass(this.getActivity(), RulesActivity.class);
+                this.getActivity().startActivity(intent);
                 break;
             case R.id.interactive_videoInfo:
                 intent.setClass(this.getActivity(), VideoInformationActivity.class);

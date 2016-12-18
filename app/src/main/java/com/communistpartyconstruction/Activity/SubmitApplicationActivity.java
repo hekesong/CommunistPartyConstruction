@@ -43,6 +43,7 @@ public class SubmitApplicationActivity extends AppCompatActivity implements View
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.submitApplication_goBack:
+                finish();
                 break;
             case R.id.submitApplication_submitButton:
 

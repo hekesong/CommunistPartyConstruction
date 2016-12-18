@@ -16,8 +16,11 @@ public class SuggestActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggest);
         goBack = (Button) findViewById(R.id.suggest_goBack);
+        goBack.setOnClickListener(this);
         comfirm = (Button) findViewById(R.id.suggest_button);
+        comfirm.setOnClickListener(this);
         editText = (EditText) findViewById(R.id.suggest_edittext);
+
 
     }
 
@@ -25,10 +28,9 @@ public class SuggestActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.suggest_goBack:
+                finish();
                 break;
             case R.id.suggest_button:
-                break;
-            case R.id.suggest_edittext:
                 break;
 
             default:

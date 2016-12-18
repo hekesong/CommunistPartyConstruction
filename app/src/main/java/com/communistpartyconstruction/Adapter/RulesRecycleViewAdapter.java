@@ -22,13 +22,22 @@ public class RulesRecycleViewAdapter extends RecyclerView.Adapter<RulesRecycleVi
     private LayoutInflater mInflater;
     private String[] mTitles = null;
     private Context context;
-    public RulesRecycleViewAdapter(Context context) {
+    private String type;
+    public RulesRecycleViewAdapter(Context context,String type) {
         this.mInflater = LayoutInflater.from(context);
         this.mTitles = new String[20];
         this.context = context;
-        for (int i = 0; i < 20; i++) {
-            int index = i + 1;
-            mTitles[i] = "[上级制度]条例" + index;
+        this.type = type;
+        if (type.equals("0")) {
+            for (int i = 0; i < 20; i++) {
+                int index = i + 1;
+                mTitles[i] = "[上级制度]条例" + index;
+            }
+        } else if (type.equals("1")){
+            for (int i = 0; i < 20; i++) {
+                int index = i + 1;
+                mTitles[i] = "[文件]文件" + index;
+            }
         }
     }
     @Override
@@ -43,7 +52,12 @@ public class RulesRecycleViewAdapter extends RecyclerView.Adapter<RulesRecycleVi
         SpannableStringBuilder builder = new SpannableStringBuilder(mTitles[position]);
         //ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色
         ForegroundColorSpan redSpan = new ForegroundColorSpan(ContextCompat.getColor(context,R.color.red));
-        builder.setSpan(redSpan, 0, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        if (type.equals("0")) {
+            builder.setSpan(redSpan, 0, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        } else if (type.equals("1")){
+            builder.setSpan(redSpan, 0, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
 
         holder.item_tv.setText(mTitles[position]);
 

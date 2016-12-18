@@ -66,7 +66,7 @@
                 android:textColor="@color/hint_grey"
                 android:textSize="14sp"
                 android:id="@+id/submitApplication_name"
-                android:paddingTop="11dp"
+                android:background="@null"
                 />
         </LinearLayout>
         <LinearLayout
@@ -87,6 +87,7 @@
                 android:layout_marginRight="10dp"
                 android:textColor="@color/hint_grey"
                 android:textSize="14sp"
+                android:background="@null"
                 android:id="@+id/submitApplication_gender"
                 android:paddingTop="15dp"
                 />
@@ -116,8 +117,8 @@
                 android:layout_marginRight="10dp"
                 android:textColor="@color/hint_grey"
                 android:textSize="14sp"
+                android:background="@null"
                 android:id="@+id/submitApplication_racial"
-                android:paddingTop="11dp"
                 />
         </LinearLayout>
         <LinearLayout
@@ -138,8 +139,8 @@
                 android:layout_marginRight="10dp"
                 android:textColor="@color/hint_grey"
                 android:textSize="14sp"
+                android:background="@null"
                 android:id="@+id/submitApplication_birthday"
-                android:paddingTop="15dp"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -167,8 +168,8 @@
                 android:layout_marginRight="10dp"
                 android:textColor="@color/hint_grey"
                 android:textSize="14sp"
+                android:background="@null"
                 android:id="@+id/submitApplication_nativePlace"
-                android:paddingTop="11dp"
                 />
         </LinearLayout>
         <LinearLayout
@@ -189,8 +190,8 @@
                 android:layout_marginRight="10dp"
                 android:textColor="@color/hint_grey"
                 android:textSize="14sp"
+                android:background="@null"
                 android:id="@+id/submitApplication_birthPlace"
-                android:paddingTop="15dp"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -218,8 +219,8 @@
                 android:layout_marginRight="10dp"
                 android:textColor="@color/hint_grey"
                 android:textSize="14sp"
+                android:background="@null"
                 android:id="@+id/submitApplication_education"
-                android:paddingTop="11dp"
                 />
         </LinearLayout>
         <LinearLayout
@@ -240,8 +241,8 @@
                 android:layout_marginRight="10dp"
                 android:textColor="@color/hint_grey"
                 android:textSize="14sp"
+                android:background="@null"
                 android:id="@+id/submitApplication_school"
-                android:paddingTop="15dp"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -270,7 +271,7 @@
                 android:textColor="@color/hint_grey"
                 android:textSize="14sp"
                 android:id="@+id/submitApplication_work"
-                android:paddingTop="11dp"
+                android:background="@null"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -298,8 +299,8 @@
                 android:layout_marginRight="10dp"
                 android:textColor="@color/hint_grey"
                 android:textSize="14sp"
+                android:background="@null"
                 android:id="@+id/submitApplication_presentPlace"
-                android:paddingTop="11dp"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -327,8 +328,8 @@
                 android:layout_marginRight="10dp"
                 android:textColor="@color/hint_grey"
                 android:textSize="14sp"
+                android:background="@null"
                 android:id="@+id/submitApplication_id"
-                android:paddingTop="11dp"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -357,7 +358,7 @@
                 android:textColor="@color/hint_grey"
                 android:textSize="14sp"
                 android:id="@+id/submitApplication_special"
-                android:paddingTop="11dp"
+                android:background="@null"
                 />
         </LinearLayout>
     </LinearLayout>

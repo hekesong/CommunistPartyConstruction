@@ -9,7 +9,7 @@ import android.widget.EditText;
 import com.communistpartyconstruction.R;
 
 public class InformActivity extends AppCompatActivity {
-    private Button confirmButton;
+    private Button confirmButton,goBack;
     private EditText name,studentID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,13 @@ public class InformActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+        goBack = (Button) findViewById(R.id.inform_goBack);
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

@@ -23,7 +23,7 @@ public class PasswordChangeActivity extends AppCompatActivity {
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                finish();
             }
         });
         confirm.setOnClickListener(new View.OnClickListener() {
