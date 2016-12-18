@@ -1,7 +1,11 @@
 package com.communistpartyconstruction.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,11 +51,14 @@ public class PartySchoolStyleAdapter extends RecyclerView.Adapter<PartySchoolSty
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         if (list.get(position).isPartySchoolStyle()){
-            holder.item_title.setText(list.get(position).getRed_title()+list.get(position).getCommon_title());
+            String text = "["+list.get(position).getRed_title()+"]"+list.get(position).getCommon_title();
+            int end = list.get(position).getRed_title().length()+"[]".length();
+            SpannableStringBuilder style = new SpannableStringBuilder(text);
+            style.setSpan(new ForegroundColorSpan(Color.RED), 0,end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE );
+            holder.item_title.setText(style);
         } else {
             holder.item_title.setText(list.get(position).getCommon_title());
         }
-        holder.item_title.setText(list.get(position).getRed_title()+list.get(position).getCommon_title());
         holder.item_auther.setText(list.get(position).getAuthor());
         holder.item_the_number_of_clicks.setText(list.get(position).getThe_number_of_clicks());
         holder.item_time.setText(list.get(position).getTime());
