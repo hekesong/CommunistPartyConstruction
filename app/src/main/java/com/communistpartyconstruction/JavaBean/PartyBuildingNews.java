@@ -63,6 +63,19 @@ public class PartyBuildingNews {
         this.imageurl = imageurl;
     }
 
+    @Override
+    public String toString() {
+        return "PartyBuildingNews{" +
+                "browse='" + browse + '\'' +
+                ", title='" + title + '\'' +
+                ", imageurl='" + imageurl + '\'' +
+                ", share='" + share + '\'' +
+                ", comment='" + comment + '\'' +
+                ", time='" + time + '\'' +
+                ", contenturl='" + contenturl + '\'' +
+                '}';
+    }
+
     public void setTitle(String title) {
 
         this.title = title;

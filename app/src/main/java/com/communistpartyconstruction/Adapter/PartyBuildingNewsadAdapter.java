@@ -1,6 +1,7 @@
 package com.communistpartyconstruction.Adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,10 @@ import android.widget.Toast;
 
 import com.communistpartyconstruction.JavaBean.PartyBuildingNews;
 import com.communistpartyconstruction.R;
+import com.communistpartyconstruction.Support.getScreenWidthAndHeight;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.util.List;
 
@@ -24,6 +29,15 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
     private List<PartyBuildingNews> list;
     private OnRecyclerViewItemClickListener mOnItemClickListener = null;
     private Context mcontext;
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
+    private DisplayImageOptions options = new DisplayImageOptions.Builder()
+            .showImageOnLoading(R.mipmap.ic_launcher)
+            .showImageOnFail(R.mipmap.logo)
+            .cacheInMemory(true)
+            .cacheOnDisk(true)
+            .bitmapConfig(Bitmap.Config.RGB_565)
+            .build();
+
     //define interface
     public static interface OnRecyclerViewItemClickListener {
         void onItemClick(View view , String data);
@@ -33,6 +47,8 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
         this.mInflater = LayoutInflater.from(context);
         mcontext = context;
         this.list = list;
+        imageLoader.init(ImageLoaderConfiguration.createDefault(mcontext));
+
     }
 
     @Override
@@ -64,6 +80,15 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
         });
         holder.item_time.setText(list.get(position).getTime());
         holder.itemView.setTag(list.get(position).getContenturl());
+        int screenWidth = getScreenWidthAndHeight.getScreenWidth(mcontext);
+        ViewGroup.LayoutParams lp = holder.item_iv.getLayoutParams();
+        lp.width = screenWidth;
+        lp.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        holder.item_iv.setLayoutParams(lp);
+        holder.item_iv.setMaxWidth(screenWidth);
+        holder.item_iv.setMaxHeight(screenWidth*5);
+        ImageLoader.getInstance().displayImage(list.get(position).getImageurl(), holder.item_iv, options);
+
     }
 
     @Override
@@ -97,6 +122,7 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
             item_iv = (ImageView) view.findViewById(R.id.partybuildingnews_iv);
             share_ll = (LinearLayout) view.findViewById(R.id.partybuildingnews_share_ll);
             comment_ll = (LinearLayout) view.findViewById(R.id.partybuildingnews_comment_ll);
+            item_iv = (ImageView) view.findViewById(R.id.partybuildingnews_iv);
         }
     }
 }
