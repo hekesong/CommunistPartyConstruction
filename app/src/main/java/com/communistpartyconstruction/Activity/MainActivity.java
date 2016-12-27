@@ -14,7 +14,7 @@ import com.communistpartyconstruction.R;
 public class MainActivity extends Activity {
     private RadioButton rb_home,rb_interactive,rb_me;
     private Mylisten mylisten;
-    private HomeFragment homeFragment;
+    private HomeFragment homeFragment ;
     private InteractiveFragment interactiveFragment;
     private MeFragment meFragment;
     private android.app.FragmentTransaction begintTransaction;

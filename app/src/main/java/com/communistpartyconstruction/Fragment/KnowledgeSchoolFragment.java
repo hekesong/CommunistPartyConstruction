@@ -46,7 +46,6 @@ public class KnowledgeSchoolFragment extends Fragment {
         for (int i = 0; i < 20; i++) {
             partyBuildingNews.setTitle("树立正确入党动机，发挥模范带头作用--知识讲堂，入党的意义，党的使命");
             partyBuildingNews.setBrowse("463次");
-            partyBuildingNews.setComment("156次");
             partyBuildingNews.setTime("一天前");
             partyBuildingNews.setShare("816次");
             partyBuildingNews.setContenturl("http://www.baidu.com/");

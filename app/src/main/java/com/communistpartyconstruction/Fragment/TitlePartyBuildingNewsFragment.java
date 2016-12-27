@@ -48,7 +48,6 @@ public class TitlePartyBuildingNewsFragment extends Fragment {
         for (int i = 0; i < 20; i++) {
             partyBuildingNews.setTitle("树立正确入党动机，发挥模范带头作用--记第54期自动化分党校课后讨论");
             partyBuildingNews.setBrowse("463次");
-            partyBuildingNews.setComment("156次");
             partyBuildingNews.setTime("一天前");
             partyBuildingNews.setShare("816次");
             partyBuildingNews.setContenturl("http://www.baidu.com/");
@@ -78,4 +77,6 @@ public class TitlePartyBuildingNewsFragment extends Fragment {
         recycleView.setAdapter(adapter);
         recycleView.addItemDecoration(new InteractiveRecycleViewDecoration(this.getActivity(),OrientationHelper.VERTICAL));
     }
+
+
 }

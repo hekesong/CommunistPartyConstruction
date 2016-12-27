@@ -6,7 +6,7 @@ package com.communistpartyconstruction.JavaBean;
  */
 
 public class PartyBuildingNews {
-    private String title,imageurl,browse,share,comment,time,contenturl;
+    private String title,imageurl,browse,share,time,contenturl;
 
     public String getTitle() {
         return title;
@@ -26,15 +26,6 @@ public class PartyBuildingNews {
 
     public void setTime(String time) {
         this.time = time;
-    }
-
-    public String getComment() {
-
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     public String getShare() {
@@ -70,7 +61,6 @@ public class PartyBuildingNews {
                 ", title='" + title + '\'' +
                 ", imageurl='" + imageurl + '\'' +
                 ", share='" + share + '\'' +
-                ", comment='" + comment + '\'' +
                 ", time='" + time + '\'' +
                 ", contenturl='" + contenturl + '\'' +
                 '}';

@@ -73,7 +73,6 @@ public class AnnouncementActivity extends Activity {
         for (int i = 0; i < 20; i++) {
             partyBuildingNews.setTitle("微固分党校第56期入党积极分子培训班教学计划");
             partyBuildingNews.setBrowse("463次");
-            partyBuildingNews.setComment("156次");
             partyBuildingNews.setTime("一天前");
             partyBuildingNews.setShare("816次");
             partyBuildingNews.setContenturl("http://www.baidu.com/");

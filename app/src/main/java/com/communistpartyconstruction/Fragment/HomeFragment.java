@@ -7,13 +7,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 import com.communistpartyconstruction.Activity.AnnouncementActivity;
 import com.communistpartyconstruction.Activity.NewsActivity;
@@ -25,16 +23,8 @@ import com.communistpartyconstruction.Constant.Host;
 import com.communistpartyconstruction.JavaBean.PartyBuildingNews;
 import com.communistpartyconstruction.R;
 import com.communistpartyconstruction.Support.FullyLinearLayoutManager;
-import com.communistpartyconstruction.Support.GetData;
+import com.communistpartyconstruction.Support.HttpUtils;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -53,17 +43,17 @@ public class HomeFragment extends Fragment{
     private List<PartyBuildingNews> list;
     private LinearLayout news,style,theoretical_overview,announcement;
     private myListen myListen;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (view == null){
-                view = inflater.inflate(R.layout.home_fragment,container,false);
+            view = inflater.inflate(R.layout.home_fragment,container,false);
+            myListen = new myListen();
+            list = new ArrayList<PartyBuildingNews>();
+            new NewsAsyncTask().execute();
         }
         initView();
-        myListen = new myListen();
-        list = new ArrayList<PartyBuildingNews>();
-        new NewsAsyncTask().execute();
-
         return  view;
     }
 
@@ -128,73 +118,36 @@ public class HomeFragment extends Fragment{
 
         @Override
         protected String doInBackground(Void... voids) {
-            String result = getNews();
+            String result = "";
+            JSONObject jsonParam = new JSONObject();
+            try{
+                jsonParam.put("pageIndex", "0");
+                jsonParam.put("pageSize", "10");
+                result = HttpUtils.HttpPost(getActivity(),Host.news,jsonParam);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             return result;
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            if (!s.equals("")){
-                Log.e("hekesong",s);
-                JSONObject object;
-                try {
-                    object = new JSONObject(s);
-                    JSONArray array = object.getJSONArray("news");
-                    PartyBuildingNews partyBuildingNews = new PartyBuildingNews();
-                    for (int i=0;i<array.length();i++){
-                        JSONObject object1 = array.getJSONObject(i);
-                        partyBuildingNews.setContenturl(object1.getString("link"));
-                        partyBuildingNews.setShare(object1.getString("sharesNum")+getResources().getString(R.string.times));
-                        partyBuildingNews.setBrowse(object1.getString("pv")+getResources().getString(R.string.times));
-                        partyBuildingNews.setTitle(object1.getString("title"));
-                        partyBuildingNews.setImageurl(Host.pictureUrl+object1.getString("images"));
-                        partyBuildingNews.setTime(GetData.getDistanceFromNow(object1.getLong("publishTime")));
-                        partyBuildingNews.setComment("249次");
-                        list.add(partyBuildingNews);
-                    }
-
-                    adapter = new PartyBuildingNewsadAdapter(getActivity(),list);
-                    adapter.setOnItemClickListener(new PartyBuildingNewsadAdapter.OnRecyclerViewItemClickListener() {
+            list = HttpUtils.getNewsList(s,getActivity());
+            adapter = new PartyBuildingNewsadAdapter(getActivity(),list);
+            adapter.setOnItemClickListener(new PartyBuildingNewsadAdapter.OnRecyclerViewItemClickListener() {
                         @Override
                         public void onItemClick(View view, String data) {
-                            Intent intent = new Intent();
-                            intent.putExtra("contenturl",data);
-                            intent.putExtra("title",getActivity().getResources().getString(R.string.news_details));
-                            intent.setClass(getActivity(), WebViewActivity.class);
-                            startActivity(intent);
+                     Intent intent = new Intent();
+                     intent.putExtra("contenturl",data);
+                     intent.putExtra("title",getActivity().getResources().getString(R.string.news_details));
+                     intent.setClass(getActivity(), WebViewActivity.class);
+                     startActivity(intent);
                         }
                     });
-                    recycleView.setAdapter(adapter);
-                } catch (JSONException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+            recycleView.setAdapter(adapter);
 
-            } else {
-                Toast.makeText(getActivity(),getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
-            }
         }
     }
 
-    private String getNews(){
-        String result = "";
-        HttpClient client = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost(Host.news);
-        JSONObject jsonParam = new JSONObject();
-        try{
-            jsonParam.put("pageIndex", "0");
-            jsonParam.put("pageSize", "10");
-            StringEntity entity = new StringEntity(jsonParam.toString(),"utf-8");
-            entity.setContentEncoding("UTF-8");
-            entity.setContentType("application/json");
-            httpPost.setEntity(entity);
-            HttpResponse response = client.execute(httpPost);
-            result = EntityUtils.toString(response.getEntity());
-        } catch (Exception e){
-
-        }
-
-        return result;
-    }
 }

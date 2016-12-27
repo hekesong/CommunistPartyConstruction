@@ -67,5 +67,5 @@
     <string name="release_time">发布时间：</string>
     <string name="internet_problem">请检查网络设置</string>
     <string name="times">次</string>
-
+    <string name="server_connection_failed">服务器连接失败</string>
 </resources>

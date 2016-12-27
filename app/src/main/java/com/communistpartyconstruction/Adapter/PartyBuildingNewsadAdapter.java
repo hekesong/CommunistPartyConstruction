@@ -64,18 +64,11 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.item_title.setText(list.get(position).getTitle());
         holder.item_browse.setText(list.get(position).getBrowse());
-        holder.item_comment.setText(list.get(position).getComment());
         holder.item_share.setText(list.get(position).getShare());
         holder.share_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(mcontext,"分享成功",Toast.LENGTH_SHORT).show();
-            }
-        });
-        holder.comment_ll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(mcontext,"暂时无法评论",Toast.LENGTH_SHORT).show();
             }
         });
         holder.item_time.setText(list.get(position).getTime());
@@ -109,19 +102,17 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
     }
     //自定义的ViewHolder，持有每个Item的的所有界面元素
     static class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView item_title,item_browse,item_share,item_comment,item_time;
+        private TextView item_title,item_browse,item_share,item_time;
         private ImageView item_iv;
-        private LinearLayout share_ll,comment_ll;
+        private LinearLayout share_ll;
         ViewHolder(View view){
             super(view);
             item_title = (TextView) view.findViewById(R.id.partybuildingnews_title_tv);
             item_browse = (TextView) view.findViewById(R.id.partybuildingnews_browse_tv);
             item_share = (TextView) view.findViewById(R.id.partybuildingnews_share_tv);
-            item_comment = (TextView) view.findViewById(R.id.partybuildingnews_comment_tv);
             item_time = (TextView) view.findViewById(R.id.partybuildingnews_time_tv);
             item_iv = (ImageView) view.findViewById(R.id.partybuildingnews_iv);
             share_ll = (LinearLayout) view.findViewById(R.id.partybuildingnews_share_ll);
-            comment_ll = (LinearLayout) view.findViewById(R.id.partybuildingnews_comment_ll);
             item_iv = (ImageView) view.findViewById(R.id.partybuildingnews_iv);
         }
     }
