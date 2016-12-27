@@ -2,6 +2,7 @@ package com.communistpartyconstruction.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
@@ -11,8 +12,12 @@ import android.widget.LinearLayout;
 
 import com.communistpartyconstruction.Adapter.Decoration.InteractiveRecycleViewDecoration;
 import com.communistpartyconstruction.Adapter.PartyBuildingNewsadAdapter;
+import com.communistpartyconstruction.Constant.Host;
 import com.communistpartyconstruction.JavaBean.PartyBuildingNews;
 import com.communistpartyconstruction.R;
+import com.communistpartyconstruction.Support.HttpUtils;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,13 +32,14 @@ public class AnnouncementActivity extends Activity {
     private RecyclerView recycleView;
     private LinearLayoutManager linearLayoutManager;
     private PartyBuildingNewsadAdapter adapter;
-    private List<PartyBuildingNews> list;
+    private List<PartyBuildingNews> list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announcement);
-        initData();
+
         initView();
+        new announcementAsynctask().execute();
     }
 
     private void initView() {
@@ -52,31 +58,41 @@ public class AnnouncementActivity extends Activity {
 
         linearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
         recycleView.setLayoutManager(linearLayoutManager);
-        adapter = new PartyBuildingNewsadAdapter(AnnouncementActivity.this,list);
-        adapter.setOnItemClickListener(new PartyBuildingNewsadAdapter.OnRecyclerViewItemClickListener() {
-            @Override
-            public void onItemClick(View view, String data) {
-                Intent intent = new Intent();
-                intent.putExtra("contenturl",data);
-                intent.putExtra("title",getResources().getString(R.string.news_details));
-                intent.setClass(AnnouncementActivity.this, WebViewActivity.class);
-                startActivity(intent);
-            }
-        });
-        recycleView.setAdapter(adapter);
+
         recycleView.addItemDecoration(new InteractiveRecycleViewDecoration(AnnouncementActivity.this,OrientationHelper.VERTICAL));
     }
 
-    private void initData() {
-        list = new ArrayList<>();
-        PartyBuildingNews partyBuildingNews = new PartyBuildingNews();
-        for (int i = 0; i < 20; i++) {
-            partyBuildingNews.setTitle("微固分党校第56期入党积极分子培训班教学计划");
-            partyBuildingNews.setBrowse("463次");
-            partyBuildingNews.setTime("一天前");
-            partyBuildingNews.setShare("816次");
-            partyBuildingNews.setContenturl("http://www.baidu.com/");
-            list.add(partyBuildingNews);
+    class announcementAsynctask extends AsyncTask<Void,Void,String>{
+        @Override
+        protected String doInBackground(Void... voids) {
+            String result = "";
+            JSONObject jsonParam = new JSONObject();
+            try{
+                jsonParam.put("pageIndex", "0");
+                jsonParam.put("pageSize", "10");
+                result = HttpUtils.HttpPost(AnnouncementActivity.this, Host.getAnnouncementsList,jsonParam);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            list = HttpUtils.getNewsList(s,AnnouncementActivity.this);
+            adapter = new PartyBuildingNewsadAdapter(AnnouncementActivity.this,list);
+            adapter.setOnItemClickListener(new PartyBuildingNewsadAdapter.OnRecyclerViewItemClickListener() {
+                @Override
+                public void onItemClick(View view, String data) {
+                    Intent intent = new Intent();
+                    intent.putExtra("contenturl",data);
+                    intent.putExtra("title",AnnouncementActivity.this.getResources().getString(R.string.news_details));
+                    intent.setClass(AnnouncementActivity.this, WebViewActivity.class);
+                    startActivity(intent);
+                }
+            });
+            recycleView.setAdapter(adapter);
         }
     }
 }

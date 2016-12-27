@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.communistpartyconstruction.JavaBean.PartyBuildingNews;
 import com.communistpartyconstruction.R;
-import com.communistpartyconstruction.Support.getScreenWidthAndHeight;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -73,13 +72,13 @@ public class PartyBuildingNewsadAdapter extends RecyclerView.Adapter<PartyBuildi
         });
         holder.item_time.setText(list.get(position).getTime());
         holder.itemView.setTag(list.get(position).getContenturl());
-        int screenWidth = getScreenWidthAndHeight.getScreenWidth(mcontext);
-        ViewGroup.LayoutParams lp = holder.item_iv.getLayoutParams();
-        lp.width = screenWidth;
-        lp.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        holder.item_iv.setLayoutParams(lp);
-        holder.item_iv.setMaxWidth(screenWidth);
-        holder.item_iv.setMaxHeight(screenWidth*5);
+//        int screenWidth = getScreenWidthAndHeight.getScreenWidth(mcontext);
+//        ViewGroup.LayoutParams lp = holder.item_iv.getLayoutParams();
+//        lp.width = screenWidth;
+//        lp.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+//        holder.item_iv.setLayoutParams(lp);
+//        holder.item_iv.setMaxWidth(screenWidth);
+//        holder.item_iv.setMaxHeight(screenWidth*5);
         ImageLoader.getInstance().displayImage(list.get(position).getImageurl(), holder.item_iv, options);
 
     }

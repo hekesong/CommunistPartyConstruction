@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.communistpartyconstruction.Constant.Host;
 import com.communistpartyconstruction.JavaBean.PartyBuildingNews;
+import com.communistpartyconstruction.JavaBean.PartySchoolStyle;
 import com.communistpartyconstruction.R;
 
 import org.apache.http.HttpResponse;
@@ -74,7 +75,6 @@ public class HttpUtils {
     public static List<PartyBuildingNews> getNewsList (String s,Context context){
         List<PartyBuildingNews> list = new ArrayList<>();
         if (!s.equals("")){
-            Log.e("hekesong",s);
             JSONObject object;
             try {
                 object = new JSONObject(s);
@@ -100,6 +100,33 @@ public class HttpUtils {
             Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
         }
 
+        return list;
+    }
+
+    public static List<PartySchoolStyle> getStyleList(String s,boolean isPartySchoolStyle,Context context){
+        List<PartySchoolStyle> list = new ArrayList<>();
+        if (!s.equals("")){
+            JSONObject object;
+            try {
+                object = new JSONObject(s);
+                JSONArray array = object.getJSONArray("partySchoolActivities");
+                PartySchoolStyle partySchoolStyle = new PartySchoolStyle();
+                partySchoolStyle.setIsPartySchoolStyle(isPartySchoolStyle);
+                for (int i=0;i<array.length();i++){
+                    JSONObject object1 = array.getJSONObject(i);
+                    partySchoolStyle.setRed_title(object1.getString("category"));
+                    partySchoolStyle.setCommon_title(object1.getString("title"));
+                    partySchoolStyle.setAuthor(object1.getString("author"));
+                    partySchoolStyle.setThe_number_of_clicks(object1.getString("clicksNum")+context.getResources().getString(R.string.times));
+                    partySchoolStyle.setTime(GetData.getdata(object1.getLong("publishTime")*1000));
+                    partySchoolStyle.setContenturl(object1.getString("link"));
+                    list.add(partySchoolStyle);
+                }
+            } catch (Exception e){
+            }
+        } else {
+            Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
+        }
         return list;
     }
 }

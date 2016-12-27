@@ -38,6 +38,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/author"
                 android:textSize="12sp"
+                android:singleLine="true"
+                android:ellipsize="end"
                 android:layout_gravity="left|center_vertical"
                 />
             <TextView
@@ -45,6 +47,8 @@
                 android:layout_height="wrap_content"
                 android:text="何科松"
                 android:textSize="12sp"
+                android:singleLine="true"
+                android:ellipsize="end"
                 android:layout_gravity="left|center_vertical"
                 android:layout_marginLeft="5dp"
                 android:id="@+id/partschoolstyle_author_tv"

@@ -2,18 +2,24 @@ package com.communistpartyconstruction.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.communistpartyconstruction.Adapter.Decoration.InteractiveRecycleViewDecoration;
 import com.communistpartyconstruction.Adapter.PartySchoolStyleAdapter;
+import com.communistpartyconstruction.Constant.Host;
 import com.communistpartyconstruction.JavaBean.PartySchoolStyle;
 import com.communistpartyconstruction.R;
+import com.communistpartyconstruction.Support.HttpUtils;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +34,9 @@ public class StytleActivity extends Activity {
     private LinearLayout back;
     private LinearLayoutManager linearLayoutManager;
     private PartySchoolStyleAdapter adapter;
-    private List<PartySchoolStyle> list;
+    private List<PartySchoolStyle> list = new ArrayList<>();
     private TextView title;
+    private boolean isPartySchoolStyle ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,43 +45,15 @@ public class StytleActivity extends Activity {
         Intent intent = getIntent();
         String type = intent.getStringExtra("type");
         if (type.equals("TYPE_STYLE")){
-            initData1();
             title.setText(getResources().getString(R.string.style));
+            isPartySchoolStyle = true;
         }else if(type.equals("TYPE_THEORETICAL_OVERVIEW")){
-            initData2();
             title.setText(getResources().getString(R.string.theoretical_overview));
+            isPartySchoolStyle = false;
         }
 
         initView();
-    }
-
-    private void initData1() {
-        list = new ArrayList<>();
-        PartySchoolStyle partySchoolStyle = new PartySchoolStyle();
-        for (int i = 0; i < 20; i++) {
-            partySchoolStyle.setIsPartySchoolStyle(true);
-            partySchoolStyle.setCommon_title("青春演绎 红歌奋进 ——通信分党校第十二届红歌演绎会圆满落幕");
-            partySchoolStyle.setTime("2016-12-18");
-            partySchoolStyle.setAuthor("龚俊狼");
-            partySchoolStyle.setRed_title("学校党校");
-            partySchoolStyle.setThe_number_of_clicks("168次");
-            partySchoolStyle.setContenturl("http://www.baidu.com/");
-            list.add(partySchoolStyle);
-        }
-    }
-    private void initData2() {
-        list = new ArrayList<>();
-        PartySchoolStyle partySchoolStyle = new PartySchoolStyle();
-        for (int i = 0; i < 20; i++) {
-            partySchoolStyle.setIsPartySchoolStyle(false);
-            partySchoolStyle.setCommon_title("习近平在全国党校会议上发表重要讲话");
-            partySchoolStyle.setTime("2016-12-18");
-            partySchoolStyle.setAuthor("龚俊狼");
-            partySchoolStyle.setRed_title("学校党校");
-            partySchoolStyle.setThe_number_of_clicks("168次");
-            partySchoolStyle.setContenturl("http://www.baidu.com/");
-            list.add(partySchoolStyle);
-        }
+        new styleAsynctask().execute();
     }
 
     private void initView() {
@@ -92,18 +71,55 @@ public class StytleActivity extends Activity {
         linearLayoutManager = new LinearLayoutManager(StytleActivity.this);
         linearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
         recycleView.setLayoutManager(linearLayoutManager);
-        adapter = new PartySchoolStyleAdapter(StytleActivity.this,list);
-        adapter.setOnItemClickListener(new PartySchoolStyleAdapter.OnRecyclerViewItemClickListener() {
-            @Override
-            public void onItemClick(View view, String data) {
-                Intent intent = new Intent();
-                intent.putExtra("contenturl",data);
-                intent.putExtra("title",getResources().getString(R.string.news_details));
-                intent.setClass(StytleActivity.this, WebViewActivity.class);
-                startActivity(intent);
-            }
-        });
-        recycleView.setAdapter(adapter);
+
         recycleView.addItemDecoration(new InteractiveRecycleViewDecoration(StytleActivity.this,OrientationHelper.VERTICAL));
     }
+
+    class styleAsynctask extends AsyncTask<Void,Void,String>{
+        @Override
+        protected String doInBackground(Void... voids) {
+            String result = "";
+            JSONObject jsonParam = new JSONObject();
+            if (isPartySchoolStyle){
+                try{
+                    jsonParam.put("pageIndex", "0");
+                    jsonParam.put("pageSize", "10");
+                    result = HttpUtils.HttpPost(StytleActivity.this, Host.getPartySchoolActivitiesList,jsonParam);
+                    Log.e("hekesong",isPartySchoolStyle+"");
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            } else {
+                try{
+                    jsonParam.put("pageIndex", "0");
+                    jsonParam.put("pageSize", "10");
+                    result = HttpUtils.HttpPost(StytleActivity.this,Host.getTheoriesList,jsonParam);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            list = HttpUtils.getStyleList(s,isPartySchoolStyle,StytleActivity.this);
+            Log.e("list",list.toString());
+            adapter = new PartySchoolStyleAdapter(StytleActivity.this,list);
+            adapter.setOnItemClickListener(new PartySchoolStyleAdapter.OnRecyclerViewItemClickListener() {
+                @Override
+                public void onItemClick(View view, String data) {
+                    Intent intent = new Intent();
+                    intent.putExtra("contenturl",data);
+                    intent.putExtra("title",getResources().getString(R.string.news_details));
+                    intent.setClass(StytleActivity.this, WebViewActivity.class);
+                    startActivity(intent);
+                }
+            });
+            recycleView.setAdapter(adapter);
+        }
+    }
+
 }
