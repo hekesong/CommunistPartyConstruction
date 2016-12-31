@@ -1,18 +1,24 @@
 package com.communistpartyconstruction.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.communistpartyconstruction.Activity.WebViewActivity;
+import com.communistpartyconstruction.JavaBean.RulesJavaBean;
 import com.communistpartyconstruction.R;
+
+import java.util.List;
 
 /**
  * Created by DerryChan on 2016/12/5 0005.
@@ -20,25 +26,14 @@ import com.communistpartyconstruction.R;
 
 public class RulesRecycleViewAdapter extends RecyclerView.Adapter<RulesRecycleViewAdapter.ViewHolder> {
     private LayoutInflater mInflater;
-    private String[] mTitles = null;
     private Context context;
     private String type;
-    public RulesRecycleViewAdapter(Context context,String type) {
+    private List<RulesJavaBean> list;
+    public RulesRecycleViewAdapter(Context context, String type, List<RulesJavaBean> list) {
         this.mInflater = LayoutInflater.from(context);
-        this.mTitles = new String[20];
         this.context = context;
         this.type = type;
-        if (type.equals("0")) {
-            for (int i = 0; i < 20; i++) {
-                int index = i + 1;
-                mTitles[i] = "[上级制度]条例" + index;
-            }
-        } else if (type.equals("1")){
-            for (int i = 0; i < 20; i++) {
-                int index = i + 1;
-                mTitles[i] = "[文件]文件" + index;
-            }
-        }
+        this.list = list;
     }
     @Override
     public RulesRecycleViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -48,31 +43,55 @@ public class RulesRecycleViewAdapter extends RecyclerView.Adapter<RulesRecycleVi
     }
 
     @Override
-    public void onBindViewHolder(RulesRecycleViewAdapter.ViewHolder holder, int position) {
-        SpannableStringBuilder builder = new SpannableStringBuilder(mTitles[position]);
+    public void onBindViewHolder(RulesRecycleViewAdapter.ViewHolder holder, final int position) {
+        SpannableStringBuilder builder = new SpannableStringBuilder(list.get(position ).getTitle());
         //ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色
         ForegroundColorSpan redSpan = new ForegroundColorSpan(ContextCompat.getColor(context,R.color.red));
-        if (type.equals("0")) {
-            builder.setSpan(redSpan, 0, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        } else if (type.equals("1")){
-            builder.setSpan(redSpan, 0, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        switch (type){
+            case "0"://规章制度
+                builder.setSpan(redSpan, 0, list.get(position).getTitleLength(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                break;
+            case "1"://文件资料
+                builder.setSpan(redSpan, 0, list.get(position).getTitleLength(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                break;
+            case "2"://党校风采
+                break;
+            case "3"://理论概要
+                break;
+            default:
+                break;
         }
 
-
-        holder.item_tv.setText(mTitles[position]);
-
+        holder.item_tv.setText(list.get(position ).getContent());
         holder.item_title.setText(builder);
         holder.body.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent();
+                intent.putExtra("contenturl",list.get(position).getUrl());
+                switch (type){
+                    case "0"://规章制度
+                        intent.putExtra("title",context.getResources().getString(R.string.rules));
+                        break;
+                    case "1"://文件资料
+                        intent.putExtra("title",context.getResources().getString(R.string.fileInfo));
+                        break;
+                    case "2"://党校风采
+                        break;
+                    case "3"://理论概要
+                        break;
+                    default:
+                        break;
+                }
+                intent.setClass(context, WebViewActivity.class);
+                context.startActivity(intent);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return mTitles.length;
+        return list.size();
     }
     //自定义的ViewHolder，持有每个Item的的所有界面元素
     static class ViewHolder extends RecyclerView.ViewHolder {

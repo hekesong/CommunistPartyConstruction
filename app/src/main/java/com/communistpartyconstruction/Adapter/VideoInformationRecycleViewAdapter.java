@@ -8,7 +8,10 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.communistpartyconstruction.JavaBean.VideoJavaBean;
 import com.communistpartyconstruction.R;
+
+import java.util.List;
 
 /**
  * Created by DerryChan on 2016/12/8 0008.
@@ -17,6 +20,7 @@ import com.communistpartyconstruction.R;
 public class VideoInformationRecycleViewAdapter extends RecyclerView.Adapter<VideoInformationRecycleViewAdapter.ViewHolder> {
     private LayoutInflater mInflater;
     private String[] mTitles = null;
+    private List<VideoJavaBean> list;
     private Context context;
     public VideoInformationRecycleViewAdapter(Context context) {
         this.mInflater = LayoutInflater.from(context);
@@ -47,7 +51,7 @@ public class VideoInformationRecycleViewAdapter extends RecyclerView.Adapter<Vid
 
     @Override
     public int getItemCount() {
-        return mTitles.length;
+        return list.size();
     }
     //自定义的ViewHolder，持有每个Item的的所有界面元素
     static class ViewHolder extends RecyclerView.ViewHolder {

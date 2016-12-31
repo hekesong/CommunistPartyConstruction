@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.communistpartyconstruction.Constant.Host;
 import com.communistpartyconstruction.JavaBean.PartyBuildingNews;
 import com.communistpartyconstruction.JavaBean.PartySchoolStyle;
+import com.communistpartyconstruction.JavaBean.RulesJavaBean;
 import com.communistpartyconstruction.R;
 
 import org.apache.http.HttpResponse;
@@ -121,6 +122,28 @@ public class HttpUtils {
                     partySchoolStyle.setTime(GetData.getdata(object1.getLong("publishTime")*1000));
                     partySchoolStyle.setContenturl(object1.getString("link"));
                     list.add(partySchoolStyle);
+                }
+            } catch (Exception e){
+            }
+        } else {
+            Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
+        }
+        return list;
+    }
+
+    public static List<RulesJavaBean> getRulesList(String s, Context context){
+        List<RulesJavaBean> list = new ArrayList<>();
+        if (!s.equals("")){
+            try {
+                JSONArray array = new JSONArray(s);
+                for (int i=0;i<array.length();i++){
+                    JSONObject object1 = array.getJSONObject(i);
+                    RulesJavaBean javaBean = new RulesJavaBean();
+                    javaBean.setTitle("[" + object1.getString("category") + "]" + object1.getString("title"));
+                    javaBean.setContent("作者:" + object1.getString("author") + "  点击:" + object1.getString("clicksNum") + "  发布时间:" + GetData.getdata(Long.parseLong(object1.getString("publishTime"))));
+                    javaBean.setTitleLength(object1.getString("category").length() + 2);
+                    javaBean.setUrl(object1.getString("link"));
+                    list.add(javaBean);
                 }
             } catch (Exception e){
             }

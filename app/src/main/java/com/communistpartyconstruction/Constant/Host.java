@@ -13,4 +13,7 @@ public class Host {
     public static String getPartySchoolActivitiesList = host+"Home/GetPartySchoolActivitiesList";
     public static String getTheoriesList = host+"Home/GetTheoriesList";
     public static String getAnnouncementsList = host+"Home/GetAnnouncementsList";
+    public static String submitApplication = host + "Interactive/SubmitApplication";
+    public static String getRegulationsList = host + "Interactive/GetRegulationsList";
+    public static String GetFileDocsList = host + "Interactive/GetFileDocsList";
 }
