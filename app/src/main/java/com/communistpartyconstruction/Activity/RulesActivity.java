@@ -98,7 +98,7 @@ public class RulesActivity extends AppCompatActivity {
                         result = HttpUtils.HttpPost(context, Host.getRegulationsList,jsonParam);
                         break;
                     case "1"://文件资料
-                        result = HttpUtils.HttpPost(context, Host.GetFileDocsList,jsonParam);
+                        result = HttpUtils.HttpPost(context, Host.getFileDocsList,jsonParam);
                         break;
                     case "2"://党校风采
                         break;

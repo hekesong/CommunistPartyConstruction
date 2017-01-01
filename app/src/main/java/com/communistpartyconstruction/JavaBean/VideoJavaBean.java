@@ -36,4 +36,7 @@ public class VideoJavaBean {
         this.cover = cover;
         this.link = link;
     }
+    public VideoJavaBean(){
+
+    }
 }

@@ -1,20 +1,32 @@
 package com.communistpartyconstruction.Fragment;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.communistpartyconstruction.Activity.CustomLoginActivity;
 import com.communistpartyconstruction.Activity.MyPointActivity;
 import com.communistpartyconstruction.Activity.SettingActivity;
+import com.communistpartyconstruction.Activity.SubmitApplicationActivity;
 import com.communistpartyconstruction.Activity.SuggestActivity;
+import com.communistpartyconstruction.Constant.Host;
+import com.communistpartyconstruction.JavaBean.MeJavaBean;
+import com.communistpartyconstruction.JavaBean.SubmitApplicationJavaBean;
 import com.communistpartyconstruction.R;
 import com.communistpartyconstruction.Support.CircleImageView;
+import com.communistpartyconstruction.Support.HttpUtils;
+
+import org.json.JSONObject;
 
 /**
  * Created by hekesong on 2016/11/15.
@@ -33,6 +45,10 @@ public class MeFragment extends Fragment implements View.OnClickListener {
             view = inflater.inflate(R.layout.me_fragment,container,false);
         }
         initUI();
+        MeAsyncTask task = new MeAsyncTask(this.getActivity());
+        task.execute();
+
+
         return  view;
     }
     private void initUI(){
@@ -52,6 +68,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         message.setOnClickListener(this);
         suggest.setOnClickListener(this);
         setting.setOnClickListener(this);
+        headView.setOnClickListener(this);
     }
     @Override
     public void onClick(View view) {
@@ -76,10 +93,41 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 this.getActivity().startActivity(intent);
                 break;
             case R.id.meFragment_headView:
+                intent.setClass(this.getActivity(), CustomLoginActivity.class);
+                this.getActivity().startActivity(intent);
                 break;
 
             default:
                 break;
+        }
+    }
+    class MeAsyncTask extends AsyncTask<Void,Void,String> {
+        Context context;
+        public MeAsyncTask(Context context){
+            this.context = context;
+        }
+        @Override
+        protected String doInBackground(Void... voids) {
+            String result = "";
+            try{
+                result = HttpUtils.HttpGet(context,Host.host + "/User/" + "1" + "/GetInfo");
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Log.e("00",s);
+            MeJavaBean bean = HttpUtils.getMeJavaBean(s,context);
+            myName.setText(bean.getName());
+            mySchool.setText(bean.getSchool());
+
+
+
+
         }
     }
 }

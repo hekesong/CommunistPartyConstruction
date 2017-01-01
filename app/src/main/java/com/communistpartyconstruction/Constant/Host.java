@@ -15,5 +15,9 @@ public class Host {
     public static String getAnnouncementsList = host+"Home/GetAnnouncementsList";
     public static String submitApplication = host + "Interactive/SubmitApplication";
     public static String getRegulationsList = host + "Interactive/GetRegulationsList";
-    public static String GetFileDocsList = host + "Interactive/GetFileDocsList";
+    public static String getFileDocsList = host + "Interactive/GetFileDocsList";
+    public static String getVideoDocsList = host + "Interactive/GetVideoDocsList";
+    public static String getLearnerActivitiesList = host + "Interactive/GetLearnerActivitiesList";
+    public static String getInfo = host + "Interactive/GetInfo";
+    public static String login = host + "User/Login";
 }

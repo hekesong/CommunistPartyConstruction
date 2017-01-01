@@ -1,10 +1,12 @@
 package com.communistpartyconstruction.JavaBean;
 
+import java.io.Serializable;
+
 /**
  * Created by DerryChan on 2016/12/29 0029.
  */
 
-public class SubmitApplicationJavaBean {
+public class SubmitApplicationJavaBean implements Serializable{
     private String name,gender,racial,birthday,birthPlace,nativePlace,education,work,school,idCard,presentPlace,special;
 
     public String getName() {

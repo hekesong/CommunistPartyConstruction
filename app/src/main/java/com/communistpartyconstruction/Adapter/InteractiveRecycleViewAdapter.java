@@ -1,6 +1,7 @@
 package com.communistpartyconstruction.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,11 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.communistpartyconstruction.Activity.WebViewActivity;
+import com.communistpartyconstruction.JavaBean.RulesJavaBean;
 import com.communistpartyconstruction.R;
+
+import java.util.List;
 
 /**
  * Created by DerryChan on 2016/11/29 0029.
@@ -16,15 +21,12 @@ import com.communistpartyconstruction.R;
 
 public class InteractiveRecycleViewAdapter extends RecyclerView.Adapter<InteractiveRecycleViewAdapter.ViewHolder> {
     private LayoutInflater mInflater;
-    private String[] mTitles = null;
-
-    public InteractiveRecycleViewAdapter(Context context) {
+    private List<RulesJavaBean> list;
+    private Context context;
+    public InteractiveRecycleViewAdapter(Context context,List<RulesJavaBean> list) {
         this.mInflater = LayoutInflater.from(context);
-        this.mTitles = new String[20];
-        for (int i = 0; i < 20; i++) {
-            int index = i + 1;
-            mTitles[i] = "item" + index;
-        }
+        this.list = list;
+        this.context = context;
     }
 
     @Override
@@ -35,13 +37,17 @@ public class InteractiveRecycleViewAdapter extends RecyclerView.Adapter<Interact
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.item_tv.setText(mTitles[position]);
-        holder.item_title.setText(mTitles[position]);
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        holder.item_tv.setText(list.get(position).getContent());
+        holder.item_title.setText(list.get(position).getTitle());
         holder.body.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent();
+                intent.putExtra("contenturl",list.get(position).getUrl());
+                intent.putExtra("title",context.getResources().getString(R.string.membership));
+                intent.setClass(context, WebViewActivity.class);
+                context.startActivity(intent);
             }
         });
     }
@@ -49,7 +55,7 @@ public class InteractiveRecycleViewAdapter extends RecyclerView.Adapter<Interact
 
     @Override
     public int getItemCount() {
-        return mTitles.length;
+        return list.size();
     }
 
     //自定义的ViewHolder，持有每个Item的的所有界面元素

@@ -1,6 +1,7 @@
 package com.communistpartyconstruction.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,11 +22,17 @@ public class SubmitApplicationActivity extends AppCompatActivity implements View
     private EditText name,gender,racial,birthday,birthPlace,nativePlace,education,work,school,idCard,presentPlace,special;
     private Button goBack,submit;
     private SubmitApplicationJavaBean submitApplicationJavaBean;
-
+    private Boolean isEmpty;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_application);
+        if ((SubmitApplicationJavaBean) this.getIntent().getSerializableExtra("SubmitApplicationJavaBean") != null){
+            submitApplicationJavaBean = (SubmitApplicationJavaBean) this.getIntent().getSerializableExtra("SubmitApplicationJavaBean");
+            isEmpty = false;
+        }else {
+            isEmpty = true;
+        }
         initUI();
 
     }
@@ -43,7 +50,11 @@ public class SubmitApplicationActivity extends AppCompatActivity implements View
         idCard = (EditText) findViewById(R.id.submitApplication_id);
         presentPlace = (EditText) findViewById(R.id.submitApplication_presentPlace);
         special = (EditText) findViewById(R.id.submitApplication_special);
+        if (!isEmpty){
+            name.setText(submitApplicationJavaBean.getName());
+            name.setEnabled(false);
 
+        }
         goBack = (Button) findViewById(R.id.submitApplication_goBack);
         goBack.setOnClickListener(this);
         submit = (Button) findViewById(R.id.submitApplication_submitButton);
@@ -113,6 +124,7 @@ public class SubmitApplicationActivity extends AppCompatActivity implements View
 
         @Override
         protected void onPostExecute(String s) {
+            super.onPostExecute(s);
             Log.e("00",s);
 
         }

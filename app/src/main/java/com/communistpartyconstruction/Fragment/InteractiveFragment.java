@@ -1,12 +1,15 @@
 package com.communistpartyconstruction.Fragment;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +22,15 @@ import com.communistpartyconstruction.Activity.VideoInformationActivity;
 import com.communistpartyconstruction.Activity.WebViewActivity;
 import com.communistpartyconstruction.Adapter.Decoration.InteractiveRecycleViewDecoration;
 import com.communistpartyconstruction.Adapter.InteractiveRecycleViewAdapter;
+import com.communistpartyconstruction.Adapter.RulesRecycleViewAdapter;
+import com.communistpartyconstruction.Constant.Host;
+import com.communistpartyconstruction.JavaBean.RulesJavaBean;
 import com.communistpartyconstruction.R;
+import com.communistpartyconstruction.Support.HttpUtils;
+
+import org.json.JSONObject;
+
+import java.util.List;
 
 /**
  * Created by hekesong on 2016/11/15.
@@ -31,6 +42,8 @@ public class InteractiveFragment extends Fragment implements View.OnClickListene
     private RecyclerView memberList;
     private RecyclerView.Adapter mAdapter;
     private LinearLayoutManager mLayoutManager;
+    private List<RulesJavaBean> list;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,6 +52,8 @@ public class InteractiveFragment extends Fragment implements View.OnClickListene
             view = inflater.inflate(R.layout.interactive_fragment,container,false);
         }
         initUI();
+        InteractiveAsyncTask task = new InteractiveAsyncTask(getActivity());
+        task.execute();
         return  view;
     }
     private void initUI(){
@@ -65,8 +80,8 @@ public class InteractiveFragment extends Fragment implements View.OnClickListene
         //给RecyclerView设置布局管理器
         memberList.setLayoutManager(mLayoutManager);
         //创建适配器，并且设置
-        mAdapter = new InteractiveRecycleViewAdapter(this.getActivity());
-        memberList.setAdapter(mAdapter);
+//        mAdapter = new InteractiveRecycleViewAdapter(this.getActivity());
+//        memberList.setAdapter(mAdapter);
         //添加分隔线
         memberList.addItemDecoration(new InteractiveRecycleViewDecoration(this.getActivity(),OrientationHelper.VERTICAL));
     }
@@ -106,6 +121,37 @@ public class InteractiveFragment extends Fragment implements View.OnClickListene
 
             default:
                 break;
+        }
+    }
+    class InteractiveAsyncTask extends AsyncTask<Void,Void,String> {
+        Context context;
+        public InteractiveAsyncTask(Context context){
+            this.context = context;
+        }
+        @Override
+        protected String doInBackground(Void... voids) {
+            String result = "";
+            JSONObject jsonParam = new JSONObject();
+            try{
+                jsonParam.put("pageIndex", "0");
+                jsonParam.put("pageSize", "10");
+                result = HttpUtils.HttpPost(context, Host.getLearnerActivitiesList,jsonParam);
+
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Log.e("00",s);
+            list = HttpUtils.getInteractiveList(s,context);
+            InteractiveRecycleViewAdapter adapter = new InteractiveRecycleViewAdapter(context,list);
+            memberList.setAdapter(adapter);
+
         }
     }
 }

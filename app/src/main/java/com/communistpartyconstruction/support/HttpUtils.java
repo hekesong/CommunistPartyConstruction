@@ -5,9 +5,12 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.communistpartyconstruction.Constant.Host;
+import com.communistpartyconstruction.JavaBean.MeJavaBean;
 import com.communistpartyconstruction.JavaBean.PartyBuildingNews;
 import com.communistpartyconstruction.JavaBean.PartySchoolStyle;
 import com.communistpartyconstruction.JavaBean.RulesJavaBean;
+import com.communistpartyconstruction.JavaBean.SubmitApplicationJavaBean;
+import com.communistpartyconstruction.JavaBean.VideoJavaBean;
 import com.communistpartyconstruction.R;
 
 import org.apache.http.HttpResponse;
@@ -151,5 +154,83 @@ public class HttpUtils {
             Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
         }
         return list;
+    }
+    public static List<VideoJavaBean> getVideosList(String s, Context context){
+        List<VideoJavaBean> list = new ArrayList<>();
+        if (!s.equals("")){
+            try {
+                JSONArray array = new JSONArray(s);
+                for (int i=0;i<array.length();i++){
+                    JSONObject object1 = array.getJSONObject(i);
+                    VideoJavaBean javaBean = new VideoJavaBean();
+                    javaBean.setTitle(object1.getString("title"));
+                    javaBean.setCover(object1.getString("cover"));
+                    javaBean.setLink(object1.getString("link"));
+                    list.add(javaBean);
+                }
+            } catch (Exception e){
+            }
+        } else {
+            Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
+        }
+        return list;
+    }
+    public static List<RulesJavaBean> getInteractiveList(String s, Context context){
+        List<RulesJavaBean> list = new ArrayList<>();
+        if (!s.equals("")){
+            try {
+                JSONArray array = new JSONArray(s);
+                for (int i=0;i<array.length();i++){
+                    JSONObject object1 = array.getJSONObject(i);
+                    RulesJavaBean javaBean = new RulesJavaBean();
+                    javaBean.setTitle(object1.getString("title"));
+                    javaBean.setContent("作者:" + object1.getString("author") +  "  发布时间:" + GetData.getdata(Long.parseLong(object1.getString("publishTime"))));javaBean.setUrl(object1.getString("link"));
+                    list.add(javaBean);
+                }
+            } catch (Exception e){
+            }
+        } else {
+            Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
+        }
+        return list;
+    }
+    public static SubmitApplicationJavaBean getInformJavaBean(String s, Context context){
+        SubmitApplicationJavaBean bean = new SubmitApplicationJavaBean();
+        if (!s.equals("")){
+            try {
+                JSONObject object = new JSONObject(s);
+                bean.setName(object.getString("name"));
+                bean.setGender(object.getString("sex"));
+                bean.setRacial(object.getString("nation"));
+                bean.setBirthday(object.getString("dateOfBirth"));
+                bean.setNativePlace(object.getString("nativePlace"));
+                bean.setBirthPlace(object.getString("placeOfBirth"));
+                bean.setEducation(object.getString("educationBackground"));
+                bean.setSchool(object.getString("schoolOrTitle"));
+                bean.setWork(object.getString("workCondition"));
+                bean.setPresentPlace(object.getString("livingPlace"));
+                bean.setIdCard(object.getString("idNumber"));
+                bean.setSpecial(object.getString("specialSkill"));
+            } catch (Exception e){
+            }
+        } else {
+            Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
+        }
+        return bean;
+    }
+    public static MeJavaBean getMeJavaBean(String s, Context context){
+        MeJavaBean bean = new MeJavaBean();
+        if (!s.equals("")){
+            try {
+                JSONObject object = new JSONObject(s);
+                bean.setName(object.getString("name"));
+                bean.setSchool(object.getString("introduction"));
+
+            } catch (Exception e){
+            }
+        } else {
+            Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
+        }
+        return bean;
     }
 }

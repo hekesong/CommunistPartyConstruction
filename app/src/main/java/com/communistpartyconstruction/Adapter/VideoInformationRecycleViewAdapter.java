@@ -1,15 +1,23 @@
 package com.communistpartyconstruction.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.communistpartyconstruction.Activity.WebViewActivity;
+import com.communistpartyconstruction.Constant.Host;
 import com.communistpartyconstruction.JavaBean.VideoJavaBean;
 import com.communistpartyconstruction.R;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.util.List;
 
@@ -19,17 +27,22 @@ import java.util.List;
 
 public class VideoInformationRecycleViewAdapter extends RecyclerView.Adapter<VideoInformationRecycleViewAdapter.ViewHolder> {
     private LayoutInflater mInflater;
-    private String[] mTitles = null;
     private List<VideoJavaBean> list;
     private Context context;
-    public VideoInformationRecycleViewAdapter(Context context) {
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
+    private DisplayImageOptions options = new DisplayImageOptions.Builder()
+            .showImageOnLoading(R.mipmap.ic_launcher)
+            .showImageOnFail(R.mipmap.logo)
+            .cacheInMemory(true)
+            .cacheOnDisk(true)
+            .bitmapConfig(Bitmap.Config.RGB_565)
+            .build();
+
+    public VideoInformationRecycleViewAdapter(Context context,List<VideoJavaBean> list) {
         this.mInflater = LayoutInflater.from(context);
-        this.mTitles = new String[20];
+        this.list = list;
         this.context = context;
-        for (int i = 0; i < 20; i++) {
-            int index = i + 1;
-            mTitles[i] = "视频文件" + index;
-        }
+        imageLoader.init(ImageLoaderConfiguration.createDefault(this.context));
     }
     @Override
     public VideoInformationRecycleViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -39,14 +52,19 @@ public class VideoInformationRecycleViewAdapter extends RecyclerView.Adapter<Vid
     }
 
     @Override
-    public void onBindViewHolder(VideoInformationRecycleViewAdapter.ViewHolder holder, int position) {
-        holder.item_title.setText(mTitles[position]);
+    public void onBindViewHolder(VideoInformationRecycleViewAdapter.ViewHolder holder, final int position) {
+        holder.item_title.setText(list.get(position).getTitle());
         holder.body.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent();
+                intent.putExtra("contenturl",list.get(position).getLink());
+                intent.putExtra("title",context.getResources().getString(R.string.videoInfo));
+                intent.setClass(context, WebViewActivity.class);
+                context.startActivity(intent);
             }
         });
+        ImageLoader.getInstance().displayImage(Host.pictureUrl + list.get(position).getCover(), holder.item_iv, options);
     }
 
     @Override
@@ -57,10 +75,12 @@ public class VideoInformationRecycleViewAdapter extends RecyclerView.Adapter<Vid
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView item_title;
         RelativeLayout body;
+        private ImageView item_iv;
         ViewHolder(View view) {
             super(view);
             item_title = (TextView) view.findViewById(R.id.activity_video_information_cardview_text);
             body = (RelativeLayout) view.findViewById(R.id.activity_video_information_cardview_body);
+            item_iv = (ImageView) view.findViewById(R.id.activity_video_information_cardview_img);
         }
     }
 }
