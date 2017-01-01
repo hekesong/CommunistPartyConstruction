@@ -20,4 +20,6 @@ public class Host {
     public static String getLearnerActivitiesList = host + "Interactive/GetLearnerActivitiesList";
     public static String getInfo = host + "Interactive/GetInfo";
     public static String login = host + "User/Login";
+    public static String share = host + "User/1/GetShares";
+    public static String history = host + "User/1/GetUserReviews";
 }

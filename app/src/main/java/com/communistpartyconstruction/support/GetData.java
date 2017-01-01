@@ -1,7 +1,5 @@
 package com.communistpartyconstruction.Support;
 
-import android.util.Log;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -20,7 +18,6 @@ public class GetData {
 
     //判断该时间距离现在多久了
     public static String getDistanceFromNow(Long t){
-        Log.e("timetest",getdata(t*1000));
         boolean isAddBefore = true ;//是否需要添加 前
         StringBuffer sb = new StringBuffer();
         long time = System.currentTimeMillis() - (t*1000);

@@ -1,7 +1,7 @@
 package com.communistpartyconstruction.Activity;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -11,7 +11,7 @@ import com.communistpartyconstruction.Fragment.InteractiveFragment;
 import com.communistpartyconstruction.Fragment.MeFragment;
 import com.communistpartyconstruction.R;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
     private RadioButton rb_home,rb_interactive,rb_me;
     private Mylisten mylisten;
     private HomeFragment homeFragment ;
@@ -33,6 +33,11 @@ public class MainActivity extends Activity {
         begintTransaction.replace(R.id.mainactivity_fragment,homeFragment);
         begintTransaction.commit();
         initView();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
     }
 
     private void initView() {

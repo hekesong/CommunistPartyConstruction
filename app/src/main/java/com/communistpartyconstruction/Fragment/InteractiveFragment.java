@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,6 @@ import com.communistpartyconstruction.Activity.VideoInformationActivity;
 import com.communistpartyconstruction.Activity.WebViewActivity;
 import com.communistpartyconstruction.Adapter.Decoration.InteractiveRecycleViewDecoration;
 import com.communistpartyconstruction.Adapter.InteractiveRecycleViewAdapter;
-import com.communistpartyconstruction.Adapter.RulesRecycleViewAdapter;
 import com.communistpartyconstruction.Constant.Host;
 import com.communistpartyconstruction.JavaBean.RulesJavaBean;
 import com.communistpartyconstruction.R;
@@ -147,7 +145,6 @@ public class InteractiveFragment extends Fragment implements View.OnClickListene
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Log.e("00",s);
             list = HttpUtils.getInteractiveList(s,context);
             InteractiveRecycleViewAdapter adapter = new InteractiveRecycleViewAdapter(context,list);
             memberList.setAdapter(adapter);

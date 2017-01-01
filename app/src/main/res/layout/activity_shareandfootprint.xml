@@ -13,7 +13,7 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:gravity="left|center_vertical"
-            android:id="@+id/webview_back"
+            android:id="@+id/shareandfootprint_back"
             android:background="@color/red"
             >
             <ImageView
@@ -26,27 +26,21 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/shareandfootprint_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textColor="#ffffff"
             android:textSize="18dp"
-            android:id="@+id/webview_title_tv"
-            android:text="@string/news_details"/>
-
+            android:text="@string/announcement"/>
     </RelativeLayout>
-    <ProgressBar
-        android:id="@+id/webview_progressbar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="3dip"
-        android:progressDrawable="@drawable/pg"
-        android:visibility="gone"
-        />
-    <WebView
-    android:id="@+id/webview"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</WebView>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/grey"
+        android:dividerHeight="1dp"
+        android:id="@+id/shareandfootprint_list"
+        >
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

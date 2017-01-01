@@ -33,15 +33,15 @@ import java.util.List;
  */
 
 public class HttpUtils {
-    public static String HttpGet(Context context,String url){
+    public static String HttpGet(Context context, String url) {
         String result = "";
         HttpClient client = new DefaultHttpClient();
         HttpGet get = new HttpGet(url);
         HttpResponse httpResponse = null;
-        try{
+        try {
             httpResponse = client.execute(get);
             result = EntityUtils.toString(httpResponse.getEntity());
-        } catch (Exception e){
+        } catch (Exception e) {
 
         } finally {
             client.getConnectionManager().shutdown();
@@ -49,26 +49,26 @@ public class HttpUtils {
         return result;
     }
 
-    public static String HttpPost(Context context, String url, JSONObject jsonParam){
+    public static String HttpPost(Context context, String url, JSONObject jsonParam) {
         String result = "";
         HttpClient client = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost(url);
         try {
-            StringEntity entity = new StringEntity(jsonParam.toString(),"utf-8");
+            StringEntity entity = new StringEntity(jsonParam.toString(), "utf-8");
             entity.setContentEncoding("UTF-8");
             entity.setContentType("application/json");
             httpPost.setEntity(entity);
             HttpResponse response = client.execute(httpPost);
-            StatusLine statusLine=response.getStatusLine();//获取请求对象中的响应行对象
-            int responseCode=statusLine.getStatusCode();//从状态行中获取状态码
-            if (responseCode == 200){
+            StatusLine statusLine = response.getStatusLine();//获取请求对象中的响应行对象
+            int responseCode = statusLine.getStatusCode();//从状态行中获取状态码
+            if (responseCode == 200) {
                 result = EntityUtils.toString(response.getEntity());
             } else {
-                Toast.makeText(context,context.getResources().getString(R.string.server_connection_failed),Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyApplication.getContext(), MyApplication.getContext().getResources().getString(R.string.server_connection_failed), Toast.LENGTH_SHORT).show();
             }
 
-        } catch (Exception e){
-            Log.e("JsonException",e.toString());
+        } catch (Exception e) {
+            Log.e("JsonException", e.toString());
         } finally {
             client.getConnectionManager().shutdown();
         }
@@ -76,21 +76,22 @@ public class HttpUtils {
     }
 
     //对获取PartyBuildingNews对象数据的json解析封装
-    public static List<PartyBuildingNews> getNewsList (String s,Context context){
+    public static List<PartyBuildingNews> getNewsList(String s, Context context) {
         List<PartyBuildingNews> list = new ArrayList<>();
-        if (!s.equals("")){
+        if (!s.equals("")) {
             JSONObject object;
             try {
                 object = new JSONObject(s);
                 JSONArray array = object.getJSONArray("news");
-                PartyBuildingNews partyBuildingNews = new PartyBuildingNews();
-                for (int i=0;i<array.length();i++){
+
+                for (int i = 0; i < array.length(); i++) {
+                    PartyBuildingNews partyBuildingNews = new PartyBuildingNews();
                     JSONObject object1 = array.getJSONObject(i);
                     partyBuildingNews.setContenturl(object1.getString("link"));
-                    partyBuildingNews.setShare(object1.getString("sharesNum")+context.getResources().getString(R.string.times));
-                    partyBuildingNews.setBrowse(object1.getString("pv")+context.getResources().getString(R.string.times));
+                    partyBuildingNews.setShare(object1.getString("sharesNum") + context.getResources().getString(R.string.times));
+                    partyBuildingNews.setBrowse(object1.getString("pv") + context.getResources().getString(R.string.times));
                     partyBuildingNews.setTitle(object1.getString("title"));
-                    partyBuildingNews.setImageurl(Host.pictureUrl+object1.getString("images"));
+                    partyBuildingNews.setImageurl(Host.pictureUrl + object1.getString("images"));
                     partyBuildingNews.setTime(GetData.getDistanceFromNow(object1.getLong("publishTime")));
                     list.add(partyBuildingNews);
                 }
@@ -101,45 +102,44 @@ public class HttpUtils {
             }
 
         } else {
-            Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
+            Toast.makeText(MyApplication.getContext(), MyApplication.getContext().getResources().getString(R.string.internet_problem), Toast.LENGTH_SHORT).show();
         }
-
         return list;
     }
 
-    public static List<PartySchoolStyle> getStyleList(String s,boolean isPartySchoolStyle,Context context){
+    public static List<PartySchoolStyle> getStyleList(String s, boolean isPartySchoolStyle, Context context) {
         List<PartySchoolStyle> list = new ArrayList<>();
-        if (!s.equals("")){
+        if (!s.equals("")) {
             JSONObject object;
             try {
                 object = new JSONObject(s);
                 JSONArray array = object.getJSONArray("partySchoolActivities");
-                PartySchoolStyle partySchoolStyle = new PartySchoolStyle();
-                partySchoolStyle.setIsPartySchoolStyle(isPartySchoolStyle);
-                for (int i=0;i<array.length();i++){
+                for (int i = 0; i < array.length(); i++) {
                     JSONObject object1 = array.getJSONObject(i);
+                    PartySchoolStyle partySchoolStyle = new PartySchoolStyle();
+                    partySchoolStyle.setIsPartySchoolStyle(isPartySchoolStyle);
                     partySchoolStyle.setRed_title(object1.getString("category"));
                     partySchoolStyle.setCommon_title(object1.getString("title"));
                     partySchoolStyle.setAuthor(object1.getString("author"));
-                    partySchoolStyle.setThe_number_of_clicks(object1.getString("clicksNum")+context.getResources().getString(R.string.times));
-                    partySchoolStyle.setTime(GetData.getdata(object1.getLong("publishTime")*1000));
+                    partySchoolStyle.setThe_number_of_clicks(object1.getString("clicksNum") + context.getResources().getString(R.string.times));
+                    partySchoolStyle.setTime(GetData.getdata(object1.getLong("publishTime") * 1000));
                     partySchoolStyle.setContenturl(object1.getString("link"));
                     list.add(partySchoolStyle);
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
             }
         } else {
-            Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getResources().getString(R.string.internet_problem), Toast.LENGTH_SHORT).show();
         }
         return list;
     }
 
-    public static List<RulesJavaBean> getRulesList(String s, Context context){
+    public static List<RulesJavaBean> getRulesList(String s, Context context) {
         List<RulesJavaBean> list = new ArrayList<>();
-        if (!s.equals("")){
+        if (!s.equals("")) {
             try {
                 JSONArray array = new JSONArray(s);
-                for (int i=0;i<array.length();i++){
+                for (int i = 0; i < array.length(); i++) {
                     JSONObject object1 = array.getJSONObject(i);
                     RulesJavaBean javaBean = new RulesJavaBean();
                     javaBean.setTitle("[" + object1.getString("category") + "]" + object1.getString("title"));
@@ -148,19 +148,20 @@ public class HttpUtils {
                     javaBean.setUrl(object1.getString("link"));
                     list.add(javaBean);
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
             }
         } else {
-            Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getResources().getString(R.string.internet_problem), Toast.LENGTH_SHORT).show();
         }
         return list;
     }
-    public static List<VideoJavaBean> getVideosList(String s, Context context){
+
+    public static List<VideoJavaBean> getVideosList(String s, Context context) {
         List<VideoJavaBean> list = new ArrayList<>();
-        if (!s.equals("")){
+        if (!s.equals("")) {
             try {
                 JSONArray array = new JSONArray(s);
-                for (int i=0;i<array.length();i++){
+                for (int i = 0; i < array.length(); i++) {
                     JSONObject object1 = array.getJSONObject(i);
                     VideoJavaBean javaBean = new VideoJavaBean();
                     javaBean.setTitle(object1.getString("title"));
@@ -168,35 +169,38 @@ public class HttpUtils {
                     javaBean.setLink(object1.getString("link"));
                     list.add(javaBean);
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
             }
         } else {
-            Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getResources().getString(R.string.internet_problem), Toast.LENGTH_SHORT).show();
         }
         return list;
     }
-    public static List<RulesJavaBean> getInteractiveList(String s, Context context){
+
+    public static List<RulesJavaBean> getInteractiveList(String s, Context context) {
         List<RulesJavaBean> list = new ArrayList<>();
-        if (!s.equals("")){
+        if (!s.equals("")) {
             try {
                 JSONArray array = new JSONArray(s);
-                for (int i=0;i<array.length();i++){
+                for (int i = 0; i < array.length(); i++) {
                     JSONObject object1 = array.getJSONObject(i);
                     RulesJavaBean javaBean = new RulesJavaBean();
                     javaBean.setTitle(object1.getString("title"));
-                    javaBean.setContent("作者:" + object1.getString("author") +  "  发布时间:" + GetData.getdata(Long.parseLong(object1.getString("publishTime"))));javaBean.setUrl(object1.getString("link"));
+                    javaBean.setContent("作者:" + object1.getString("author") + "  发布时间:" + GetData.getdata(Long.parseLong(object1.getString("publishTime"))));
+                    javaBean.setUrl(object1.getString("link"));
                     list.add(javaBean);
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
             }
         } else {
-            Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getResources().getString(R.string.internet_problem), Toast.LENGTH_SHORT).show();
         }
         return list;
     }
-    public static SubmitApplicationJavaBean getInformJavaBean(String s, Context context){
+
+    public static SubmitApplicationJavaBean getInformJavaBean(String s, Context context) {
         SubmitApplicationJavaBean bean = new SubmitApplicationJavaBean();
-        if (!s.equals("")){
+        if (!s.equals("")) {
             try {
                 JSONObject object = new JSONObject(s);
                 bean.setName(object.getString("name"));
@@ -211,25 +215,26 @@ public class HttpUtils {
                 bean.setPresentPlace(object.getString("livingPlace"));
                 bean.setIdCard(object.getString("idNumber"));
                 bean.setSpecial(object.getString("specialSkill"));
-            } catch (Exception e){
+            } catch (Exception e) {
             }
         } else {
-            Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getResources().getString(R.string.internet_problem), Toast.LENGTH_SHORT).show();
         }
         return bean;
     }
-    public static MeJavaBean getMeJavaBean(String s, Context context){
+
+    public static MeJavaBean getMeJavaBean(String s, Context context) {
         MeJavaBean bean = new MeJavaBean();
-        if (!s.equals("")){
+        if (!s.equals("")) {
             try {
                 JSONObject object = new JSONObject(s);
                 bean.setName(object.getString("name"));
                 bean.setSchool(object.getString("introduction"));
 
-            } catch (Exception e){
+            } catch (Exception e) {
             }
         } else {
-            Toast.makeText(context,context.getResources().getString(R.string.internet_problem),Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getResources().getString(R.string.internet_problem), Toast.LENGTH_SHORT).show();
         }
         return bean;
     }

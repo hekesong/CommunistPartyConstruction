@@ -12,21 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.communistpartyconstruction.Activity.CustomLoginActivity;
 import com.communistpartyconstruction.Activity.MyPointActivity;
 import com.communistpartyconstruction.Activity.SettingActivity;
-import com.communistpartyconstruction.Activity.SubmitApplicationActivity;
+import com.communistpartyconstruction.Activity.ShareAndFootprintActivity;
 import com.communistpartyconstruction.Activity.SuggestActivity;
 import com.communistpartyconstruction.Constant.Host;
 import com.communistpartyconstruction.JavaBean.MeJavaBean;
-import com.communistpartyconstruction.JavaBean.SubmitApplicationJavaBean;
 import com.communistpartyconstruction.R;
 import com.communistpartyconstruction.Support.CircleImageView;
 import com.communistpartyconstruction.Support.HttpUtils;
-
-import org.json.JSONObject;
 
 /**
  * Created by hekesong on 2016/11/15.
@@ -79,8 +75,14 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 this.getActivity().startActivity(intent);
                 break;
             case R.id.meFragment_history:
+                Intent historyIntent = new Intent(getActivity(), ShareAndFootprintActivity.class);
+                historyIntent.putExtra("type","TYPE_HISTORY");
+                startActivity(historyIntent);
                 break;
             case R.id.meFragment_share:
+                Intent shareIntent = new Intent(getActivity(), ShareAndFootprintActivity.class);
+                shareIntent.putExtra("type","TYPE_SHARE");
+                startActivity(shareIntent);
                 break;
             case R.id.meFragment_message:
                 break;
