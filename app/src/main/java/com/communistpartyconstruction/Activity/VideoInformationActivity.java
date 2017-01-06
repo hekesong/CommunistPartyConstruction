@@ -2,18 +2,15 @@ package com.communistpartyconstruction.Activity;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.communistpartyconstruction.Adapter.Decoration.VideoInformationRecycleViewDecoration;
-import com.communistpartyconstruction.Adapter.RulesRecycleViewAdapter;
 import com.communistpartyconstruction.Adapter.VideoInformationRecycleViewAdapter;
 import com.communistpartyconstruction.Constant.Host;
 import com.communistpartyconstruction.JavaBean.VideoJavaBean;
@@ -86,7 +83,6 @@ public class VideoInformationActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Log.e("00",s);
             list = HttpUtils.getVideosList(s,context);
             VideoInformationRecycleViewAdapter adapter = new VideoInformationRecycleViewAdapter(context,list);
             recyclerView.setAdapter(adapter);

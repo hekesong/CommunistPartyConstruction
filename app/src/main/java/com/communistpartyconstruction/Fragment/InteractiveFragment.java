@@ -103,7 +103,7 @@ public class InteractiveFragment extends Fragment implements View.OnClickListene
                 break;
             case R.id.interactive_questionnaire:
                 intent.putExtra("title",this.getString(R.string.questionnaire));
-                intent.putExtra("contenturl","http://www.baidu.com");
+                intent.putExtra("contenturl","http://www.51diaocha.com/w/1071919.htm");
                 intent.setClass(this.getActivity(), WebViewActivity.class);
                 this.getActivity().startActivity(intent);
                 break;

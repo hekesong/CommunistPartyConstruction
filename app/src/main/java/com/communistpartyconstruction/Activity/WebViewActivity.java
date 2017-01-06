@@ -22,10 +22,11 @@ import static com.communistpartyconstruction.R.id.webview;
 
 public class WebViewActivity extends Activity {
 
-    private WebView webView;
+    private static WebView webView;
     private LinearLayout back;
     private TextView title;
     private ProgressBar pg;
+    private boolean isPause = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,8 +77,47 @@ public class WebViewActivity extends Activity {
             @Override
             public void onClick(View view) {
                 finish();
+
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (webView != null){
+            try{
+                webView.getClass().getMethod("onPause").invoke(webView, (Object[]) null);
+                isPause = true;
+            }catch (Exception e){
+
+            }
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (webView != null&&isPause){
+            try{
+                webView.getClass().getMethod("onResume").invoke(webView, (Object[]) null);
+            }catch (Exception e){
+
+            }
+
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (webView != null) {
+            webView.getSettings().setBuiltInZoomControls(true);
+            webView.setVisibility(View.GONE);
+            webView.destroy();
+            webView = null;
+        }
+        isPause = false;
     }
 
     //Web视图

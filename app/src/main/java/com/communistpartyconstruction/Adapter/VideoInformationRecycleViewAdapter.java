@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +54,6 @@ public class VideoInformationRecycleViewAdapter extends RecyclerView.Adapter<Vid
     @Override
     public void onBindViewHolder(VideoInformationRecycleViewAdapter.ViewHolder holder, final int position) {
         holder.item_title.setText(list.get(position).getTitle());
-        Log.e("aaa",list.get(position).getTitle());
         holder.body.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
