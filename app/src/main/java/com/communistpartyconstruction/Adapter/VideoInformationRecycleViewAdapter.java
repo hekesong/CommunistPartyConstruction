@@ -4,11 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.communistpartyconstruction.Activity.WebViewActivity;
@@ -54,6 +55,7 @@ public class VideoInformationRecycleViewAdapter extends RecyclerView.Adapter<Vid
     @Override
     public void onBindViewHolder(VideoInformationRecycleViewAdapter.ViewHolder holder, final int position) {
         holder.item_title.setText(list.get(position).getTitle());
+        Log.e("aaa",list.get(position).getTitle());
         holder.body.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,12 +76,12 @@ public class VideoInformationRecycleViewAdapter extends RecyclerView.Adapter<Vid
     //自定义的ViewHolder，持有每个Item的的所有界面元素
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView item_title;
-        RelativeLayout body;
+        LinearLayout body;
         private ImageView item_iv;
         ViewHolder(View view) {
             super(view);
             item_title = (TextView) view.findViewById(R.id.activity_video_information_cardview_text);
-            body = (RelativeLayout) view.findViewById(R.id.activity_video_information_cardview_body);
+            body = (LinearLayout) view.findViewById(R.id.activity_video_information_cardview_body);
             item_iv = (ImageView) view.findViewById(R.id.activity_video_information_cardview_img);
         }
     }

@@ -52,9 +52,13 @@ public class WebViewActivity extends Activity {
         if (text_title != null&& !text_title.equals("")){
             title.setText(text_title);
         }
+
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setPluginState(WebSettings.PluginState.ON);
+        webView.getSettings().setUseWideViewPort(true);
         webView.setWebViewClient(new HelloWebViewClient());
+        webView.getSettings().setAllowFileAccess(true);
         //屏幕自适应
         WebSettings webSettings = webView.getSettings();
         webSettings.setUseWideViewPort(true);//设置此属性，可任意比例缩放

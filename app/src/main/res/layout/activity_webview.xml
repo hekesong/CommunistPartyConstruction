@@ -2,51 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/red"
-        >
+        android:background="@color/red">
+
         <LinearLayout
+            android:id="@+id/webview_back"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:gravity="left|center_vertical"
-            android:id="@+id/webview_back"
             android:background="@color/red"
-            >
+            android:gravity="left|center_vertical">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/back"
                 android:layout_marginLeft="10dp"
                 android:scaleType="fitCenter"
-                />
+                android:src="@mipmap/back" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/webview_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:text="@string/news_details"
             android:textColor="#ffffff"
-            android:textSize="18dp"
-            android:id="@+id/webview_title_tv"
-            android:text="@string/news_details"/>
+            android:textSize="18dp" />
 
     </RelativeLayout>
+
     <ProgressBar
         android:id="@+id/webview_progressbar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="3dip"
         android:progressDrawable="@drawable/pg"
-        android:visibility="gone"
-        />
-    <WebView
-    android:id="@+id/webview"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        android:visibility="gone" />
 
-</WebView>
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hardwareAccelerated="true"
+        >
+
+    </WebView>
 </LinearLayout>

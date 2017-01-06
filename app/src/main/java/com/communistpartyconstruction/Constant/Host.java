@@ -5,7 +5,7 @@ package com.communistpartyconstruction.Constant;
  */
 
 public class Host {
-    public static String host = "http://192.168.1.114:8080/DJY/";
+    public static String host = "http://t1.kangbiao.org:8082/DJY/";
     public static String news = host + "Home/GetNewsList";
     public static String pictureUrl = host+"images/";
     public static String knowledge = host+"Home/GetKnowledgeList";
